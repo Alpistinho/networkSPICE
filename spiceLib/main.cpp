@@ -1,9 +1,7 @@
-#include "plotwindow.h"
 #include "ComponentStorage.h"
-#include "fileManager.h"
+#include "FileManager.h"
 #include "FrequencySimulation.h"
 #include "TransientSimulation.h"
-#include <QApplication>
 
 int main(int argc, char *argv[])
 {
@@ -19,9 +17,5 @@ int main(int argc, char *argv[])
     std::vector<double> initialConditions(componentStorage2.getSystemSize(), 0);
     fileManager.writeResults(timeSim.simulateTransientResponse(&componentStorage2, initialConditions));
 
-    QApplication a(argc, argv);
-    PlotWindow w;
-    w.show();
-
-    return a.exec();
+    return 0;
 }
