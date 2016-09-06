@@ -1,21 +1,9 @@
-/********************************************************************
-	Rhapsody	: 8.1 
-	Login		: Daniel
-	Component	: SpiceComponent 
-	Configuration 	: SpiceConfig
-	Model Element	: Spice::BranchStorage
-//!	Generated Date	: Thu, 10, Dec 2015  
-	File Path	: SpiceComponent\SpiceConfig\BranchStorage.cpp
-*********************************************************************/
 
-//## auto_generated
 #include "BranchStorage.h"
-//## operation addBranch(unsigned long)
+
 #include "Branch.h"
 namespace Spice {
-    //## package Spice
-    
-    //## class BranchStorage
+
     BranchStorage::BranchStorage() {
     }
     
@@ -23,7 +11,7 @@ namespace Spice {
     }
     
     Branch* BranchStorage::addBranch(unsigned long identifier) {
-        //#[ operation addBranch(unsigned long)
+
         std::map<unsigned long, Branch*>::iterator it;
         
         it = branchMap.find(identifier);
@@ -35,11 +23,11 @@ namespace Spice {
         	return newBranch;
         }
         
-        //#]
+        
     }
     
     void BranchStorage::allocateBranchNumbers(unsigned long firstPosition) {
-        //#[ operation allocateBranchNumbers(unsigned long)
+
         unsigned long matrixPosition = firstPosition + 1;
         
         std::map<unsigned long, Branch*>::iterator it;
@@ -49,13 +37,13 @@ namespace Spice {
         	matrixPosition++;
         }
         return;
-        //#]
+        
     }
     
     unsigned long BranchStorage::getBranchAmount() {
-        //#[ operation getBranchAmount()
+
         return branchMap.size();
-        //#]
+
     }
     
     std::map<unsigned long, Branch*> BranchStorage::getBranchMap() const {
@@ -66,7 +54,3 @@ namespace Spice {
         branchMap = p_branchMap;
     }
 }
-
-/*********************************************************************
-	File Path	: SpiceComponent\SpiceConfig\BranchStorage.cpp
-*********************************************************************/

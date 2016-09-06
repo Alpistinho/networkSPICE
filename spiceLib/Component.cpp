@@ -8,15 +8,15 @@
 	File Path	: SpiceComponent\SpiceConfig\Component.cpp
 *********************************************************************/
 
-//## auto_generated
+
 #include "Component.h"
 namespace Spice {
-    //## package Spice
+
     
     //## class Component
     Component::Component(double newValue, unsigned long newKey) : key(newKey), value(newValue) {
         //#[ operation Component(double,unsigned long)
-        //#]
+        
     }
     
     Component::Component() {
@@ -28,17 +28,17 @@ namespace Spice {
     ComponentType Component::getComponentType() {
         //#[ operation getComponentType()
         return Undefined;
-        //#]
+        
     }
     
     void Component::getFrequencyStamp(std::vector<std::vector<std::complex<double>>> * equationSystem, double frequency) {
         //#[ operation getFrequencyStamp(std::vector<std::vector<std::complex<double>>> *,double)
-        //#]
+        
     }
     
     void Component::getTransientStamp(std::vector<std::vector<double>>* equationSystem, std::vector<double>* pastResults, double step) {
         //#[ operation getTransientStamp(std::vector<std::vector<double>>*,std::vector<double>*,double)
-        //#]
+        
     }
     
     unsigned long Component::getKey() const {

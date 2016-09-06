@@ -1,25 +1,12 @@
-/********************************************************************
-	Rhapsody	: 8.1 
-	Login		: Daniel
-	Component	: SpiceComponent 
-	Configuration 	: SpiceConfig
-	Model Element	: Spice::BJT
-//!	Generated Date	: Fri, 11, Dec 2015  
-	File Path	: SpiceComponent\SpiceConfig\BJT.cpp
-*********************************************************************/
 
-//## auto_generated
 #include "BJT.h"
-//## auto_generated
+
 #include "Node.h"
 
 namespace Spice {
-    //## package Spice
-    
-    //## class BJT
+
     BJT::BJT(Node** newNodes, double hfe, double hie, double hre, double hoe, double cbe, double cbc, unsigned long newKey) : ThreeTerminalsComponent(newNodes, hfe, newKey), cbc(cbc), cbe(cbe), hie(hie), hoe(hoe), hre(hre) {
-        //#[ operation BJT(Node,double,double,double,double,double,double,unsigned long)
-        //#]
+
     }
     
     BJT::BJT() {
@@ -29,7 +16,7 @@ namespace Spice {
     }
     
     void BJT::getFrequencyStamp(std::vector<std::vector<std::complex<double>>> * equationSystem, double frequency) {
-        //#[ operation getFrequencyStamp(std::vector<std::vector<std::complex<double>>> *,double)
+
         
         (*equationSystem)[nodes[0]->getNodeNumber()][nodes[0]->getNodeNumber()] += hoe - (hfe*hre)/hie;
         (*equationSystem)[nodes[0]->getNodeNumber()][nodes[1]->getNodeNumber()] += hfe/hie;
@@ -54,7 +41,7 @@ namespace Spice {
         (*equationSystem)[nodes[0]->getNodeNumber()][nodes[2]->getNodeNumber()] -= std::complex<double>(0,frequency*cbc);
         (*equationSystem)[nodes[2]->getNodeNumber()][nodes[0]->getNodeNumber()] -= std::complex<double>(0,frequency*cbc);
         (*equationSystem)[nodes[2]->getNodeNumber()][nodes[2]->getNodeNumber()] += std::complex<double>(0,frequency*cbc);
-        //#]
+
     }
     
     int BJT::getCbc() const {
@@ -106,7 +93,7 @@ namespace Spice {
     }
     
     void BJT::getTransientStamp(std::vector<std::vector<double>>* equationSystem, std::vector<double>* pastResults, double step) {
-        //#[ operation getTransientStamp(std::vector<std::vector<double>>*,std::vector<double>*,double)
+
         unsigned long columns =(*equationSystem)[0].size(); // number of columns the matrix has
         
         (*equationSystem)[nodes[0]->getNodeNumber()][nodes[0]->getNodeNumber()] += hoe - (hfe*hre)/hie;
@@ -145,10 +132,7 @@ namespace Spice {
           
         (*equationSystem)[nodes[0]->getNodeNumber()][columns - 1] += (value/step)*lastVoltage;
         (*equationSystem)[nodes[1]->getNodeNumber()][columns - 1] -= (value/step)*lastVoltage;
-        //#]
+
     }
 }
 
-/*********************************************************************
-	File Path	: SpiceComponent\SpiceConfig\BJT.cpp
-*********************************************************************/

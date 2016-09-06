@@ -1,22 +1,7 @@
-/********************************************************************
-	Rhapsody	: 8.1 
-	Login		: Daniel
-	Component	: SpiceComponent 
-	Configuration 	: SpiceConfig
-	Model Element	: Spice::FrequencySimulation
-//!	Generated Date	: Fri, 11, Dec 2015  
-	File Path	: SpiceComponent\SpiceConfig\FrequencySimulation.cpp
-*********************************************************************/
-
-//## auto_generated
 #include "FrequencySimulation.h"
-//## operation simulateFrequencyResponse(ComponentStorage,double,double,unsigned long)
 #include "ComponentStorage.h"
 
 namespace Spice {
-    //## package Spice
-    
-    //## class FrequencySimulation
     
     using namespace std;
     
@@ -44,11 +29,10 @@ namespace Spice {
         }
         
         return results;
-        //#]
+        
     }
     
     std::vector<std::complex<double>>* FrequencySimulation::solveEquationSystem(std::vector<std::vector<std::complex<double>>>& equationSystem) {
-        //#[ operation solveEquationSystem(std::vector<std::vector<std::complex<double>>>&)
         unsigned long rows = equationSystem.size();
         unsigned long columns = rows + 1;
         
@@ -63,13 +47,13 @@ namespace Spice {
         	a = i;
         
         	for (unsigned long l = i; l < rows; l++) {         					//  percorre a matriz, da linha de interesse ao final,
-        		if (abs(equationSystem[l][i]) > abs(biggest)) { 	//  procurando qual � o maior valor na coluna de interesse
+        		if (abs(equationSystem[l][i]) > abs(biggest)) { 	//  procurando qual o maior valor na coluna de interesse
         			a = l;					    				//  guarda em 'a', qual a linha do maior valor desta coluna
         			biggest = equationSystem[l][i];					//	e em 't' qual o valor do maior elemento da coluna
-        		}												//  o valor de 'i' � que percorre as columns
+        		}												//  o valor de 'i'  que percorre as columns
         	}
         	if (i != a) {										// 'i' agora diz a linha em que estamos trabalhando
-        	  for (unsigned long l = 1; l < columns; l++) {					// coloca a linha com maior piv� para cima
+        	  for (unsigned long l = 1; l < columns; l++) {					// coloca a linha com maior pivo para cima
         		pivot = equationSystem[i][l];
         		equationSystem[i][l] = equationSystem[a][l];
         		equationSystem[a][l] = pivot;
@@ -83,7 +67,7 @@ namespace Spice {
         
         	for (unsigned long j = (columns - 1) ; j > 0; j--) {  /* Basta j>i em vez de j>0 */
         	  equationSystem[i][j] /= biggest	;		  // divide um elemento pelo maior elemento de maior valor desta coluna, percorre da ultima coluna para a primeira
-        	  pivot=equationSystem[i][j];			  // guarda o valor do elemento j� dividido em 'p'
+        	  pivot=equationSystem[i][j];			  // guarda o valor do elemento j dividido em 'p'
         
         	  for (unsigned long l = 1; l < rows; l++) {
         		if (l != i)			  //remove das demais rows ('!i')
@@ -99,7 +83,7 @@ namespace Spice {
         }
         
         return result;
-        //#]
+        
     }
     
     double FrequencySimulation::getEndFreq() const {
@@ -134,49 +118,3 @@ namespace Spice {
         return results;
     }
 }
-
-//  nomes esclarecedores!
-
-//  percorre a matriz, da linha de interesse ao final,
-
-//  procurando qual � o maior valor na coluna de interesse
-
-//  guarda em 'a', qual a linha do maior valor desta coluna
-
-//	e em 't' qual o valor do maior elemento da coluna
-
-//  o valor de 'i' � que percorre as columns
-
-// 'i' agora diz a linha em que estamos trabalhando
-
-// coloca a linha com maior piv� para cima
-
-//don't know what to do yet
-
-//singular matrix
-
-/* Basta j>i em vez de j>0 */
-
-// divide um elemento pelo maior elemento de maior valor desta coluna, percorre da ultima coluna para a primeira
-
-// guarda o valor do elemento j� dividido em 'p'
-
-//remove das demais rows ('!i')
-
-//cout << endl << "Matrix: " << endl;
-
-//for(unsigned i = 1; i < rows; i++) {
-
-//	for(unsigned j = 1; j < columns; j++) {
-
-//		cout << real(equationSystem[i][j]) << "i" << imag(equationSystem[i][j]) << "  ";
-
-//	}
-
-//	cout << endl;
-
-//}
-
-/*********************************************************************
-	File Path	: SpiceComponent\SpiceConfig\FrequencySimulation.cpp
-*********************************************************************/

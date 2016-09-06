@@ -1,28 +1,14 @@
-/********************************************************************
-	Rhapsody	: 8.1 
-	Login		: Daniel
-	Component	: SpiceComponent 
-	Configuration 	: SpiceConfig
-	Model Element	: Spice::IndependentSource
-//!	Generated Date	: Fri, 11, Dec 2015  
-	File Path	: SpiceComponent\SpiceConfig\IndependentSource.cpp
-*********************************************************************/
-
-//## auto_generated
 #include "IndependentSource.h"
-//## auto_generated
+
 #include "Node.h"
 
 namespace Spice {
-    //## package Spice
     
-    //## class IndependentSource
     
     using namespace std;
     
     IndependentSource::IndependentSource(Node** newNodes, double modulus, double phase, unsigned long newKey) : TwoTerminalsComponent(newNodes, modulus, newKey), mode(DC), modulus(modulus), phase(phase) {
-        //#[ operation IndependentSource(Node,double,double,unsigned long)
-        //#]
+        
     }
     
     IndependentSource::IndependentSource() {
@@ -32,7 +18,6 @@ namespace Spice {
     }
     
     double IndependentSource::getOutput(double currentTime) {
-        //#[ operation getOutput(double)
         switch(mode) {
         	
         	case DC:
@@ -70,51 +55,46 @@ namespace Spice {
         		break;
         }	    		
           	    
-        //#]
+        
     }
     
     void IndependentSource::getTransientStamp(std::vector<std::vector<double>>* equationSystem, std::vector<double>* pastResults, double step, double currentTime) {
-        //#[ operation getTransientStamp(std::vector<std::vector<double>>*,std::vector<double>*,double,double)
-        //#]
+        
     }
     
     void IndependentSource::setMode(SourceType operationMode, double DC) {
-        //#[ operation setMode(SourceType,double)
 
         mode = operationMode;
         modulus = DC;
-        //#]
+        
     }
     
     void IndependentSource::setMode(SourceType operationMode, double freq, double mod, double p) {
-        //#[ operation setMode(SourceType,double,double,double)
 
         mode = operationMode;
         frequency = freq;
         modulus = mod;
         phase = p;
         
-        //#]
+        
     }
     
     void IndependentSource::setMode(const SourceType& operationMode, double freq, double high, double low, double off) {
-        //#[ operation setMode(SourceType,double,double,double,double,double,int)
 
         mode = operationMode;
         frequency = freq;
         highTime = high; 
         lowTime = low;
         offTime = off;
-        //#]
+        
     }
     
     void IndependentSource::setMode(const SourceType& operationMode, double DC, double delay) {
-        //#[ operation setMode(SourceType,double,double)
 
         mode = operationMode;
         modulus = DC;
         phase = delay;
-        //#]
+        
     }
     
     double IndependentSource::getFrequency() const {
@@ -133,7 +113,3 @@ namespace Spice {
         offTime = p_offTime;
     }
 }
-
-/*********************************************************************
-	File Path	: SpiceComponent\SpiceConfig\IndependentSource.cpp
-*********************************************************************/

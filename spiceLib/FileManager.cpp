@@ -1,27 +1,14 @@
-/********************************************************************
-	Rhapsody	: 8.1 
-	Login		: Daniel
-	Component	: SpiceComponent 
-	Configuration 	: SpiceConfig
-	Model Element	: Spice::FileManager
-//!	Generated Date	: Fri, 11, Dec 2015  
-	File Path	: SpiceComponent\SpiceConfig\FileManager.cpp
-*********************************************************************/
-
-//## auto_generated
 #include "FileManager.h"
-//## operation readNetlist(std::string,ComponentStorage,FrequencySimulation)
+
 #include "ComponentStorage.h"
-//## operation readNetlist(std::string,ComponentStorage,FrequencySimulation)
 #include "FrequencySimulation.h"
-//## operation readNetlist(std::string,ComponentStorage,TransientSimulation)
 #include "TransientSimulation.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 namespace Spice {
-    //## package Spice
-    
-    //## class FileManager
-    
+
     using namespace std;
     
     FileManager::FileManager() {
@@ -30,32 +17,29 @@ namespace Spice {
     FileManager::~FileManager() {
     }
     
-    //#[ ignore
-    #define _USE_MATH_DEFINES
-    #include <math.h>
-    //#]
+
+
     void FileManager::writeResults(std::map<double,std::vector<std::complex<double>>*>* results) {
-        //#[ operation writeResults(std::map<double,std::vector<std::complex<double>>*>*)
-        //#[ operation writeResults(std::map<double,std::vector<std::complex<double>>*>*)
-                map<double,vector<complex<double>>*>::iterator it;
-                ofstream resultFile;
-                resultFile.open("freq_results.txt");
-                resultFile << ((results->begin()->second->size())*2) + 1 << endl;
-                for(it = results->begin(); it != results->end(); it++) {
-                    double frequency = it->first;
-                    resultFile << frequency << ",";
-                    for(unsigned i = 0; i < it->second->size(); i++) {
-        
-                        complex<double> value = (*(it->second))[i];
-        				
-                        resultFile << abs(value) << ',' << (180/M_PI)*atan2(imag(value), real(value)) << ',';
-        
-                    }
-                    resultFile << endl;
-                }
-        
-                return;
-        //#]
+
+        map<double,vector<complex<double>>*>::iterator it;
+        ofstream resultFile;
+        resultFile.open("freq_results.txt");
+        resultFile << ((results->begin()->second->size())*2) + 1 << endl;
+        for(it = results->begin(); it != results->end(); it++) {
+            double frequency = it->first;
+            resultFile << frequency << ",";
+            for(unsigned i = 0; i < it->second->size(); i++) {
+
+                complex<double> value = (*(it->second))[i];
+                
+                resultFile << abs(value) << ',' << (180/M_PI)*atan2(imag(value), real(value)) << ',';
+
+            }
+            resultFile << endl;
+        }
+
+        return;
+
     }
     
     void FileManager::readNetlist(std::string fileName, ComponentStorage* componentStorage, FrequencySimulation* frequencySimulation) {
@@ -127,11 +111,10 @@ namespace Spice {
         
         }
         return;
-        //#]
+        
     }
     
     void FileManager::readNetlist(std::string fileName, ComponentStorage* componentStorage, TransientSimulation* timeSim) {
-        //#[ operation readNetlist(std::string,ComponentStorage,TransientSimulation)
 
         std::ifstream file(fileName);
         std::string str; 
@@ -249,7 +232,7 @@ namespace Spice {
         }
         
         return;
-        //#]
+        
     }
     
     void FileManager::writeResults(std::vector<std::pair<double, std::vector<double>>>* results) {
@@ -274,10 +257,6 @@ namespace Spice {
         		}
         
         		return;
-        //#]
+        
     }
 }
-
-/*********************************************************************
-	File Path	: SpiceComponent\SpiceConfig\FileManager.cpp
-*********************************************************************/

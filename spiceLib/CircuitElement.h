@@ -17,30 +17,30 @@ namespace Spice {
     // disable Microsoft compiler warning (debug information truncated)
     #pragma warning(disable: 4786)
     #endif
-    //#]
+    
 }
 
-//## auto_generated
+
 #include "Spice.h"
-//## auto_generated
+
 //
-//## auto_generated
+
 #include <string>
-//## auto_generated
+
 #include <algorithm>
 namespace Spice {
-    //## package Spice
+
     
     //## class CircuitElement
     class CircuitElement {
-        ////    Constructors and destructors    ////
+
         
     public :
     
-        //## auto_generated
+        
         CircuitElement();
         
-        //## auto_generated
+        
         ~CircuitElement();
     };
 }

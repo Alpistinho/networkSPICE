@@ -1,22 +1,9 @@
-/********************************************************************
-	Rhapsody	: 8.1 
-	Login		: Daniel
-	Component	: SpiceComponent 
-	Configuration 	: SpiceConfig
-	Model Element	: Spice::TransientSimulation
-//!	Generated Date	: Fri, 11, Dec 2015  
-	File Path	: SpiceComponent\SpiceConfig\TransientSimulation.cpp
-*********************************************************************/
-
-//## auto_generated
 #include "TransientSimulation.h"
-//## operation simulateTransientResponse(ComponentStorage,std::vector<double>)
 #include "ComponentStorage.h"
 
 namespace Spice {
-    //## package Spice
+
     
-    //## class TransientSimulation
     
     using namespace std;
     
@@ -46,7 +33,7 @@ namespace Spice {
 
         
         return &results;
-        //#]
+        
     }
     
     //delete old results
@@ -78,13 +65,13 @@ namespace Spice {
             a = i;
                 
             for (unsigned long l = i; l < rows; l++) {         					//  percorre a matriz, da linha de interesse ao final,
-                if (abs(equationSystem[l][i]) > abs(biggest)) { 	//  procurando qual é o maior valor na coluna de interesse
+                if (abs(equationSystem[l][i]) > abs(biggest)) { 	//  procurando qual ï¿½ o maior valor na coluna de interesse
                 	a = l;					    				//  guarda em 'a', qual a linha do maior valor desta coluna
                 	biggest = equationSystem[l][i];					//	e em 't' qual o valor do maior elemento da coluna
-                }												//  o valor de 'i' é que percorre as columns
+                }												//  o valor de 'i' ï¿½ que percorre as columns
             }
             if (i != a) {										// 'i' agora diz a linha em que estamos trabalhando
-                for (unsigned long l = 1; l < columns; l++) {					// coloca a linha com maior pivô para cima
+                for (unsigned long l = 1; l < columns; l++) {					// coloca a linha com maior pivï¿½ para cima
                 pivot = equationSystem[i][l];
                 equationSystem[i][l] = equationSystem[a][l];
                 equationSystem[a][l] = pivot;
@@ -98,7 +85,7 @@ namespace Spice {
                 
             for (unsigned long j = (columns - 1) ; j > 0; j--) {  /* Basta j>i em vez de j>0 */
                 equationSystem[i][j] /= biggest	;		  // divide um elemento pelo maior elemento de maior valor desta coluna, percorre da ultima coluna para a primeira
-                pivot=equationSystem[i][j];			  // guarda o valor do elemento já dividido em 'p'
+                pivot=equationSystem[i][j];			  // guarda o valor do elemento jï¿½ dividido em 'p'
                 
                 for (unsigned long l = 1; l < rows; l++) {
                 if (l != i)			  //remove das demais rows ('!i')
@@ -116,7 +103,7 @@ namespace Spice {
             result->push_back(equationSystem[i][columns - 1]);
         }
         return result;
-        //#]
+        
     }
     
     double TransientSimulation::getEndTime() const {
@@ -143,7 +130,3 @@ namespace Spice {
         step = p_step;
     }
 }
-
-/*********************************************************************
-	File Path	: SpiceComponent\SpiceConfig\TransientSimulation.cpp
-*********************************************************************/

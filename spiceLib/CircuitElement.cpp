@@ -8,10 +8,10 @@
 	File Path	: SpiceComponent\SpiceConfig\CircuitElement.cpp
 *********************************************************************/
 
-//## auto_generated
+
 #include "CircuitElement.h"
 namespace Spice {
-    //## package Spice
+
     
     //## class CircuitElement
     CircuitElement::CircuitElement() {

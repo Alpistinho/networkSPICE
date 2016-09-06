@@ -1,24 +1,11 @@
-/********************************************************************
-	Rhapsody	: 8.1 
-	Login		: Daniel
-	Component	: SpiceComponent 
-	Configuration 	: SpiceConfig
-	Model Element	: Spice::Node
-//!	Generated Date	: Fri, 11, Dec 2015  
-	File Path	: SpiceComponent\SpiceConfig\Node.cpp
-*********************************************************************/
-
-//## auto_generated
 #include "Node.h"
-//## operation addComponent(Component)
 #include "Component.h"
+
 namespace Spice {
-    //## package Spice
+
     
-    //## class Node
     Node::Node(std::string nodeIdentifier) : identifier(nodeIdentifier) {
-        //#[ operation Node(std::string)
-        //#]
+        
     }
     
     Node::Node() {
@@ -28,9 +15,8 @@ namespace Spice {
     }
     
     void Node::setNodeNumber(unsigned long position) {
-        //#[ operation setNodeNumber(unsigned long)
         nodeNumber = position;
-        //#]
+        
     }
     
     std::map<unsigned long, Component*> Node::getComponentMap() const {
@@ -54,11 +40,6 @@ namespace Spice {
     }
     
     void Node::addComponent(const Component* component) {
-        //#[ operation addComponent(Component)
-        //#]
+        
     }
 }
-
-/*********************************************************************
-	File Path	: SpiceComponent\SpiceConfig\Node.cpp
-*********************************************************************/
