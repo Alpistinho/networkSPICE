@@ -51,4 +51,5 @@ Temporary Items
 CMakeCache.txt
 *.cmake
 
-spiceLib/build/*
+build/*
+lib/*
