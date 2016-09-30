@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.5.1)
-
+#name of the project
 project (networkSPICE)
 
+#represent the files
 file(GLOB SPICELIB_SOURCES "src/spiceLib/*.cpp")
 
 file(GLOB SIMULATIONNODE_SOURCES "src/simulationNode/*.cpp")
