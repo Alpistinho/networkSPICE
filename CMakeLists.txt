@@ -19,4 +19,4 @@ target_include_directories(netSpiceStatic PRIVATE include/spiceLib)
 add_executable(simulationNode ${SIMULATIONNODE_SOURCES})
 target_include_directories(simulationNode PRIVATE include/spiceLib)
 
-Target_Link_Libraries(simulationNode ${CMAKE_SOURCE_DIR}/build/libnetSpiceStatic.a ${CMAKE_THREAD_LIBS_INIT})
+Target_Link_Libraries(simulationNode ${CMAKE_SOURCE_DIR}/build/libnetSpiceStatic.a)

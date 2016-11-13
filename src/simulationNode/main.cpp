@@ -1,10 +1,14 @@
 #include "ComponentStorage.h"
+#include "FrequencySimulation.h"
+#include "TransientSimulation.h"
 
-int main() {
+int main(int argc, char *argv[]) {
+    
+    Spice::ComponentStorage componentStorage;
+    Spice::FrequencySimulation freqSim;
+    Spice::TransientSimulation timeSim;
 
-	Spice::ComponentStorage storage;
+    std::vector<double> initialConditions(componentStorage.getSystemSize(), 0);
 
-	
-
-	return 0;
+    return 0;
 }
