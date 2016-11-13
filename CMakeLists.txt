@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.5.1)
-
+#name of the project
 project (networkSPICE)
 
+#represent the files
 file(GLOB SPICELIB_SOURCES "src/spiceLib/*.cpp")
 
 file(GLOB SIMULATIONNODE_SOURCES "src/simulationNode/*.cpp")
@@ -19,4 +20,8 @@ target_include_directories(netSpiceStatic PRIVATE include/spiceLib)
 add_executable(simulationNode ${SIMULATIONNODE_SOURCES})
 target_include_directories(simulationNode PRIVATE include/spiceLib)
 
+<<<<<<< HEAD
 Target_Link_Libraries(simulationNode ${CMAKE_SOURCE_DIR}/build/libnetSpiceStatic.a)
+=======
+Target_Link_Libraries(simulationNode ${CMAKE_SOURCE_DIR}/build/libnetSpiceStatic.a ${CMAKE_THREAD_LIBS_INIT})
+>>>>>>> 3b3b4690dbfe49ca37f8f0a8461d5b5f69c68eff
