@@ -49,7 +49,9 @@ Temporary Items
 *.o
 .browse.VC*
 CMakeCache.txt
+Makefile
 *.cmake
 
 build/*
 lib/*
+CMakeFiles/*
