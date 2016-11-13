@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+enum ComponentType {
+
+	Resistor = 0;
+	Capacitor = 1;
+	Inductor = 2;
+
+}
+
+message Component {
+
+	ComponentType componentType = 1;
+	repeated int32 nodes = 2;
+	repeated float values = 3;
+	repeated float tolerances = 4;
+
+}

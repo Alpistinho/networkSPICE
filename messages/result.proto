@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+message FrequencyPoint {
+
+	double frequency = 1;
+	double magnitude = 2;
+	double phase = 3;
+
+}
+
+message TransientPoint {
+
+	double time = 1;
+	double value = 2;
+
+}
+
+message Results {
+
+	repeated TransientPoint transientPoint = 1;
+	repeated FrequencyPoint frequencyPoint = 2;
+
+}
