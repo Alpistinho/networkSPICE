@@ -30,6 +30,8 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
+namespace networkSpiceMessages {
+
 // Internal implementation detail -- do not call these.
 void protobuf_AddDesc_component_2eproto();
 void protobuf_InitDefaults_component_2eproto();
@@ -62,7 +64,7 @@ inline bool ComponentType_Parse(
 }
 // ===================================================================
 
-class Component : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Component) */ {
+class Component : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:networkSpiceMessages.Component) */ {
  public:
   Component();
   virtual ~Component();
@@ -125,11 +127,11 @@ class Component : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // optional .ComponentType componentType = 1;
+  // optional .networkSpiceMessages.ComponentType componentType = 1;
   void clear_componenttype();
   static const int kComponentTypeFieldNumber = 1;
-  ::ComponentType componenttype() const;
-  void set_componenttype(::ComponentType value);
+  ::networkSpiceMessages::ComponentType componenttype() const;
+  void set_componenttype(::networkSpiceMessages::ComponentType value);
 
   // repeated int32 nodes = 2;
   int nodes_size() const;
@@ -167,7 +169,7 @@ class Component : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::google::protobuf::RepeatedField< float >*
       mutable_tolerances();
 
-  // @@protoc_insertion_point(class_scope:Component)
+  // @@protoc_insertion_point(class_scope:networkSpiceMessages.Component)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -196,18 +198,18 @@ extern ::google::protobuf::internal::ExplicitlyConstructed<Component> Component_
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // Component
 
-// optional .ComponentType componentType = 1;
+// optional .networkSpiceMessages.ComponentType componentType = 1;
 inline void Component::clear_componenttype() {
   componenttype_ = 0;
 }
-inline ::ComponentType Component::componenttype() const {
-  // @@protoc_insertion_point(field_get:Component.componentType)
-  return static_cast< ::ComponentType >(componenttype_);
+inline ::networkSpiceMessages::ComponentType Component::componenttype() const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Component.componentType)
+  return static_cast< ::networkSpiceMessages::ComponentType >(componenttype_);
 }
-inline void Component::set_componenttype(::ComponentType value) {
+inline void Component::set_componenttype(::networkSpiceMessages::ComponentType value) {
   
   componenttype_ = value;
-  // @@protoc_insertion_point(field_set:Component.componentType)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.Component.componentType)
 }
 
 // repeated int32 nodes = 2;
@@ -218,25 +220,25 @@ inline void Component::clear_nodes() {
   nodes_.Clear();
 }
 inline ::google::protobuf::int32 Component::nodes(int index) const {
-  // @@protoc_insertion_point(field_get:Component.nodes)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Component.nodes)
   return nodes_.Get(index);
 }
 inline void Component::set_nodes(int index, ::google::protobuf::int32 value) {
   nodes_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Component.nodes)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.Component.nodes)
 }
 inline void Component::add_nodes(::google::protobuf::int32 value) {
   nodes_.Add(value);
-  // @@protoc_insertion_point(field_add:Component.nodes)
+  // @@protoc_insertion_point(field_add:networkSpiceMessages.Component.nodes)
 }
 inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
 Component::nodes() const {
-  // @@protoc_insertion_point(field_list:Component.nodes)
+  // @@protoc_insertion_point(field_list:networkSpiceMessages.Component.nodes)
   return nodes_;
 }
 inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
 Component::mutable_nodes() {
-  // @@protoc_insertion_point(field_mutable_list:Component.nodes)
+  // @@protoc_insertion_point(field_mutable_list:networkSpiceMessages.Component.nodes)
   return &nodes_;
 }
 
@@ -248,25 +250,25 @@ inline void Component::clear_values() {
   values_.Clear();
 }
 inline float Component::values(int index) const {
-  // @@protoc_insertion_point(field_get:Component.values)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Component.values)
   return values_.Get(index);
 }
 inline void Component::set_values(int index, float value) {
   values_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Component.values)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.Component.values)
 }
 inline void Component::add_values(float value) {
   values_.Add(value);
-  // @@protoc_insertion_point(field_add:Component.values)
+  // @@protoc_insertion_point(field_add:networkSpiceMessages.Component.values)
 }
 inline const ::google::protobuf::RepeatedField< float >&
 Component::values() const {
-  // @@protoc_insertion_point(field_list:Component.values)
+  // @@protoc_insertion_point(field_list:networkSpiceMessages.Component.values)
   return values_;
 }
 inline ::google::protobuf::RepeatedField< float >*
 Component::mutable_values() {
-  // @@protoc_insertion_point(field_mutable_list:Component.values)
+  // @@protoc_insertion_point(field_mutable_list:networkSpiceMessages.Component.values)
   return &values_;
 }
 
@@ -278,25 +280,25 @@ inline void Component::clear_tolerances() {
   tolerances_.Clear();
 }
 inline float Component::tolerances(int index) const {
-  // @@protoc_insertion_point(field_get:Component.tolerances)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Component.tolerances)
   return tolerances_.Get(index);
 }
 inline void Component::set_tolerances(int index, float value) {
   tolerances_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Component.tolerances)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.Component.tolerances)
 }
 inline void Component::add_tolerances(float value) {
   tolerances_.Add(value);
-  // @@protoc_insertion_point(field_add:Component.tolerances)
+  // @@protoc_insertion_point(field_add:networkSpiceMessages.Component.tolerances)
 }
 inline const ::google::protobuf::RepeatedField< float >&
 Component::tolerances() const {
-  // @@protoc_insertion_point(field_list:Component.tolerances)
+  // @@protoc_insertion_point(field_list:networkSpiceMessages.Component.tolerances)
   return tolerances_;
 }
 inline ::google::protobuf::RepeatedField< float >*
 Component::mutable_tolerances() {
-  // @@protoc_insertion_point(field_mutable_list:Component.tolerances)
+  // @@protoc_insertion_point(field_mutable_list:networkSpiceMessages.Component.tolerances)
   return &tolerances_;
 }
 
@@ -307,14 +309,16 @@ inline const Component* Component::internal_default_instance() {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace networkSpiceMessages
+
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::ComponentType> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::networkSpiceMessages::ComponentType> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::ComponentType>() {
-  return ::ComponentType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::networkSpiceMessages::ComponentType>() {
+  return ::networkSpiceMessages::ComponentType_descriptor();
 }
 
 }  // namespace protobuf

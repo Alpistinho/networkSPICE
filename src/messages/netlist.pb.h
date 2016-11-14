@@ -31,6 +31,8 @@
 #include "component.pb.h"
 // @@protoc_insertion_point(includes)
 
+namespace networkSpiceMessages {
+
 // Internal implementation detail -- do not call these.
 void protobuf_AddDesc_netlist_2eproto();
 void protobuf_InitDefaults_netlist_2eproto();
@@ -63,7 +65,7 @@ inline bool SimulationType_Parse(
 }
 // ===================================================================
 
-class ConfigurationLine : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ConfigurationLine) */ {
+class ConfigurationLine : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:networkSpiceMessages.ConfigurationLine) */ {
  public:
   ConfigurationLine();
   virtual ~ConfigurationLine();
@@ -126,11 +128,11 @@ class ConfigurationLine : public ::google::protobuf::Message /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // optional .SimulationType type = 1;
+  // optional .networkSpiceMessages.SimulationType type = 1;
   void clear_type();
   static const int kTypeFieldNumber = 1;
-  ::SimulationType type() const;
-  void set_type(::SimulationType value);
+  ::networkSpiceMessages::SimulationType type() const;
+  void set_type(::networkSpiceMessages::SimulationType value);
 
   // optional double begin = 2;
   void clear_begin();
@@ -150,7 +152,7 @@ class ConfigurationLine : public ::google::protobuf::Message /* @@protoc_inserti
   ::google::protobuf::int64 points() const;
   void set_points(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:ConfigurationLine)
+  // @@protoc_insertion_point(class_scope:networkSpiceMessages.ConfigurationLine)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -170,7 +172,7 @@ extern ::google::protobuf::internal::ExplicitlyConstructed<ConfigurationLine> Co
 
 // -------------------------------------------------------------------
 
-class Netlist : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Netlist) */ {
+class Netlist : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:networkSpiceMessages.Netlist) */ {
  public:
   Netlist();
   virtual ~Netlist();
@@ -233,33 +235,33 @@ class Netlist : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // repeated .Component component = 1;
+  // repeated .networkSpiceMessages.Component component = 1;
   int component_size() const;
   void clear_component();
   static const int kComponentFieldNumber = 1;
-  const ::Component& component(int index) const;
-  ::Component* mutable_component(int index);
-  ::Component* add_component();
-  ::google::protobuf::RepeatedPtrField< ::Component >*
+  const ::networkSpiceMessages::Component& component(int index) const;
+  ::networkSpiceMessages::Component* mutable_component(int index);
+  ::networkSpiceMessages::Component* add_component();
+  ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::Component >*
       mutable_component();
-  const ::google::protobuf::RepeatedPtrField< ::Component >&
+  const ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::Component >&
       component() const;
 
-  // optional .ConfigurationLine config = 2;
+  // optional .networkSpiceMessages.ConfigurationLine config = 2;
   bool has_config() const;
   void clear_config();
   static const int kConfigFieldNumber = 2;
-  const ::ConfigurationLine& config() const;
-  ::ConfigurationLine* mutable_config();
-  ::ConfigurationLine* release_config();
-  void set_allocated_config(::ConfigurationLine* config);
+  const ::networkSpiceMessages::ConfigurationLine& config() const;
+  ::networkSpiceMessages::ConfigurationLine* mutable_config();
+  ::networkSpiceMessages::ConfigurationLine* release_config();
+  void set_allocated_config(::networkSpiceMessages::ConfigurationLine* config);
 
-  // @@protoc_insertion_point(class_scope:Netlist)
+  // @@protoc_insertion_point(class_scope:networkSpiceMessages.Netlist)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::Component > component_;
-  ::ConfigurationLine* config_;
+  ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::Component > component_;
+  ::networkSpiceMessages::ConfigurationLine* config_;
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_netlist_2eproto_impl();
   friend void  protobuf_AddDesc_netlist_2eproto_impl();
@@ -278,18 +280,18 @@ extern ::google::protobuf::internal::ExplicitlyConstructed<Netlist> Netlist_defa
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // ConfigurationLine
 
-// optional .SimulationType type = 1;
+// optional .networkSpiceMessages.SimulationType type = 1;
 inline void ConfigurationLine::clear_type() {
   type_ = 0;
 }
-inline ::SimulationType ConfigurationLine::type() const {
-  // @@protoc_insertion_point(field_get:ConfigurationLine.type)
-  return static_cast< ::SimulationType >(type_);
+inline ::networkSpiceMessages::SimulationType ConfigurationLine::type() const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.ConfigurationLine.type)
+  return static_cast< ::networkSpiceMessages::SimulationType >(type_);
 }
-inline void ConfigurationLine::set_type(::SimulationType value) {
+inline void ConfigurationLine::set_type(::networkSpiceMessages::SimulationType value) {
   
   type_ = value;
-  // @@protoc_insertion_point(field_set:ConfigurationLine.type)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.ConfigurationLine.type)
 }
 
 // optional double begin = 2;
@@ -297,13 +299,13 @@ inline void ConfigurationLine::clear_begin() {
   begin_ = 0;
 }
 inline double ConfigurationLine::begin() const {
-  // @@protoc_insertion_point(field_get:ConfigurationLine.begin)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.ConfigurationLine.begin)
   return begin_;
 }
 inline void ConfigurationLine::set_begin(double value) {
   
   begin_ = value;
-  // @@protoc_insertion_point(field_set:ConfigurationLine.begin)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.ConfigurationLine.begin)
 }
 
 // optional double end = 3;
@@ -311,13 +313,13 @@ inline void ConfigurationLine::clear_end() {
   end_ = 0;
 }
 inline double ConfigurationLine::end() const {
-  // @@protoc_insertion_point(field_get:ConfigurationLine.end)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.ConfigurationLine.end)
   return end_;
 }
 inline void ConfigurationLine::set_end(double value) {
   
   end_ = value;
-  // @@protoc_insertion_point(field_set:ConfigurationLine.end)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.ConfigurationLine.end)
 }
 
 // optional int64 points = 4;
@@ -325,13 +327,13 @@ inline void ConfigurationLine::clear_points() {
   points_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 ConfigurationLine::points() const {
-  // @@protoc_insertion_point(field_get:ConfigurationLine.points)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.ConfigurationLine.points)
   return points_;
 }
 inline void ConfigurationLine::set_points(::google::protobuf::int64 value) {
   
   points_ = value;
-  // @@protoc_insertion_point(field_set:ConfigurationLine.points)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.ConfigurationLine.points)
 }
 
 inline const ConfigurationLine* ConfigurationLine::internal_default_instance() {
@@ -341,37 +343,37 @@ inline const ConfigurationLine* ConfigurationLine::internal_default_instance() {
 
 // Netlist
 
-// repeated .Component component = 1;
+// repeated .networkSpiceMessages.Component component = 1;
 inline int Netlist::component_size() const {
   return component_.size();
 }
 inline void Netlist::clear_component() {
   component_.Clear();
 }
-inline const ::Component& Netlist::component(int index) const {
-  // @@protoc_insertion_point(field_get:Netlist.component)
+inline const ::networkSpiceMessages::Component& Netlist::component(int index) const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Netlist.component)
   return component_.Get(index);
 }
-inline ::Component* Netlist::mutable_component(int index) {
-  // @@protoc_insertion_point(field_mutable:Netlist.component)
+inline ::networkSpiceMessages::Component* Netlist::mutable_component(int index) {
+  // @@protoc_insertion_point(field_mutable:networkSpiceMessages.Netlist.component)
   return component_.Mutable(index);
 }
-inline ::Component* Netlist::add_component() {
-  // @@protoc_insertion_point(field_add:Netlist.component)
+inline ::networkSpiceMessages::Component* Netlist::add_component() {
+  // @@protoc_insertion_point(field_add:networkSpiceMessages.Netlist.component)
   return component_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::Component >*
+inline ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::Component >*
 Netlist::mutable_component() {
-  // @@protoc_insertion_point(field_mutable_list:Netlist.component)
+  // @@protoc_insertion_point(field_mutable_list:networkSpiceMessages.Netlist.component)
   return &component_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Component >&
+inline const ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::Component >&
 Netlist::component() const {
-  // @@protoc_insertion_point(field_list:Netlist.component)
+  // @@protoc_insertion_point(field_list:networkSpiceMessages.Netlist.component)
   return component_;
 }
 
-// optional .ConfigurationLine config = 2;
+// optional .networkSpiceMessages.ConfigurationLine config = 2;
 inline bool Netlist::has_config() const {
   return this != internal_default_instance() && config_ != NULL;
 }
@@ -379,27 +381,27 @@ inline void Netlist::clear_config() {
   if (GetArenaNoVirtual() == NULL && config_ != NULL) delete config_;
   config_ = NULL;
 }
-inline const ::ConfigurationLine& Netlist::config() const {
-  // @@protoc_insertion_point(field_get:Netlist.config)
+inline const ::networkSpiceMessages::ConfigurationLine& Netlist::config() const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Netlist.config)
   return config_ != NULL ? *config_
-                         : *::ConfigurationLine::internal_default_instance();
+                         : *::networkSpiceMessages::ConfigurationLine::internal_default_instance();
 }
-inline ::ConfigurationLine* Netlist::mutable_config() {
+inline ::networkSpiceMessages::ConfigurationLine* Netlist::mutable_config() {
   
   if (config_ == NULL) {
-    config_ = new ::ConfigurationLine;
+    config_ = new ::networkSpiceMessages::ConfigurationLine;
   }
-  // @@protoc_insertion_point(field_mutable:Netlist.config)
+  // @@protoc_insertion_point(field_mutable:networkSpiceMessages.Netlist.config)
   return config_;
 }
-inline ::ConfigurationLine* Netlist::release_config() {
-  // @@protoc_insertion_point(field_release:Netlist.config)
+inline ::networkSpiceMessages::ConfigurationLine* Netlist::release_config() {
+  // @@protoc_insertion_point(field_release:networkSpiceMessages.Netlist.config)
   
-  ::ConfigurationLine* temp = config_;
+  ::networkSpiceMessages::ConfigurationLine* temp = config_;
   config_ = NULL;
   return temp;
 }
-inline void Netlist::set_allocated_config(::ConfigurationLine* config) {
+inline void Netlist::set_allocated_config(::networkSpiceMessages::ConfigurationLine* config) {
   delete config_;
   config_ = config;
   if (config) {
@@ -407,7 +409,7 @@ inline void Netlist::set_allocated_config(::ConfigurationLine* config) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:Netlist.config)
+  // @@protoc_insertion_point(field_set_allocated:networkSpiceMessages.Netlist.config)
 }
 
 inline const Netlist* Netlist::internal_default_instance() {
@@ -419,14 +421,16 @@ inline const Netlist* Netlist::internal_default_instance() {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace networkSpiceMessages
+
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::SimulationType> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::networkSpiceMessages::SimulationType> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::SimulationType>() {
-  return ::SimulationType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::networkSpiceMessages::SimulationType>() {
+  return ::networkSpiceMessages::SimulationType_descriptor();
 }
 
 }  // namespace protobuf

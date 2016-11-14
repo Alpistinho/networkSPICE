@@ -17,6 +17,8 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
+namespace networkSpiceMessages {
+
 namespace {
 
 const ::google::protobuf::Descriptor* FrequencyPoint_descriptor_ = NULL;
@@ -138,12 +140,14 @@ void protobuf_AddDesc_result_2eproto_impl() {
 
   protobuf_InitDefaults_result_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\014result.proto\"E\n\016FrequencyPoint\022\021\n\tfreq"
-    "uency\030\001 \001(\001\022\021\n\tmagnitude\030\002 \001(\001\022\r\n\005phase\030"
-    "\003 \001(\001\"-\n\016TransientPoint\022\014\n\004time\030\001 \001(\001\022\r\n"
-    "\005value\030\002 \001(\001\"[\n\007Results\022\'\n\016transientPoin"
-    "t\030\001 \003(\0132\017.TransientPoint\022\'\n\016frequencyPoi"
-    "nt\030\002 \003(\0132\017.FrequencyPointb\006proto3", 233);
+    "\n\014result.proto\022\024networkSpiceMessages\"E\n\016"
+    "FrequencyPoint\022\021\n\tfrequency\030\001 \001(\001\022\021\n\tmag"
+    "nitude\030\002 \001(\001\022\r\n\005phase\030\003 \001(\001\"-\n\016Transient"
+    "Point\022\014\n\004time\030\001 \001(\001\022\r\n\005value\030\002 \001(\001\"\205\001\n\007R"
+    "esults\022<\n\016transientPoint\030\001 \003(\0132$.network"
+    "SpiceMessages.TransientPoint\022<\n\016frequenc"
+    "yPoint\030\002 \003(\0132$.networkSpiceMessages.Freq"
+    "uencyPointb\006proto3", 298);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "result.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_result_2eproto);
@@ -183,7 +187,7 @@ FrequencyPoint::FrequencyPoint()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (this != internal_default_instance()) protobuf_InitDefaults_result_2eproto();
   SharedCtor();
-  // @@protoc_insertion_point(constructor:FrequencyPoint)
+  // @@protoc_insertion_point(constructor:networkSpiceMessages.FrequencyPoint)
 }
 
 void FrequencyPoint::InitAsDefaultInstance() {
@@ -194,7 +198,7 @@ FrequencyPoint::FrequencyPoint(const FrequencyPoint& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   UnsafeMergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:FrequencyPoint)
+  // @@protoc_insertion_point(copy_constructor:networkSpiceMessages.FrequencyPoint)
 }
 
 void FrequencyPoint::SharedCtor() {
@@ -204,7 +208,7 @@ void FrequencyPoint::SharedCtor() {
 }
 
 FrequencyPoint::~FrequencyPoint() {
-  // @@protoc_insertion_point(destructor:FrequencyPoint)
+  // @@protoc_insertion_point(destructor:networkSpiceMessages.FrequencyPoint)
   SharedDtor();
 }
 
@@ -237,7 +241,7 @@ FrequencyPoint* FrequencyPoint::New(::google::protobuf::Arena* arena) const {
 }
 
 void FrequencyPoint::Clear() {
-// @@protoc_insertion_point(message_clear_start:FrequencyPoint)
+// @@protoc_insertion_point(message_clear_start:networkSpiceMessages.FrequencyPoint)
 #if defined(__clang__)
 #define ZR_HELPER_(f) \
   _Pragma("clang diagnostic push") \
@@ -265,7 +269,7 @@ bool FrequencyPoint::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:FrequencyPoint)
+  // @@protoc_insertion_point(parse_start:networkSpiceMessages.FrequencyPoint)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -328,17 +332,17 @@ bool FrequencyPoint::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:FrequencyPoint)
+  // @@protoc_insertion_point(parse_success:networkSpiceMessages.FrequencyPoint)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:FrequencyPoint)
+  // @@protoc_insertion_point(parse_failure:networkSpiceMessages.FrequencyPoint)
   return false;
 #undef DO_
 }
 
 void FrequencyPoint::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:FrequencyPoint)
+  // @@protoc_insertion_point(serialize_start:networkSpiceMessages.FrequencyPoint)
   // optional double frequency = 1;
   if (this->frequency() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->frequency(), output);
@@ -354,13 +358,13 @@ void FrequencyPoint::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->phase(), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:FrequencyPoint)
+  // @@protoc_insertion_point(serialize_end:networkSpiceMessages.FrequencyPoint)
 }
 
 ::google::protobuf::uint8* FrequencyPoint::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:FrequencyPoint)
+  // @@protoc_insertion_point(serialize_to_array_start:networkSpiceMessages.FrequencyPoint)
   // optional double frequency = 1;
   if (this->frequency() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->frequency(), target);
@@ -376,12 +380,12 @@ void FrequencyPoint::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->phase(), target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:FrequencyPoint)
+  // @@protoc_insertion_point(serialize_to_array_end:networkSpiceMessages.FrequencyPoint)
   return target;
 }
 
 size_t FrequencyPoint::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:FrequencyPoint)
+// @@protoc_insertion_point(message_byte_size_start:networkSpiceMessages.FrequencyPoint)
   size_t total_size = 0;
 
   // optional double frequency = 1;
@@ -407,22 +411,22 @@ size_t FrequencyPoint::ByteSizeLong() const {
 }
 
 void FrequencyPoint::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:FrequencyPoint)
+// @@protoc_insertion_point(generalized_merge_from_start:networkSpiceMessages.FrequencyPoint)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const FrequencyPoint* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const FrequencyPoint>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:FrequencyPoint)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:networkSpiceMessages.FrequencyPoint)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:FrequencyPoint)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:networkSpiceMessages.FrequencyPoint)
     UnsafeMergeFrom(*source);
   }
 }
 
 void FrequencyPoint::MergeFrom(const FrequencyPoint& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:FrequencyPoint)
+// @@protoc_insertion_point(class_specific_merge_from_start:networkSpiceMessages.FrequencyPoint)
   if (GOOGLE_PREDICT_TRUE(&from != this)) {
     UnsafeMergeFrom(from);
   } else {
@@ -444,14 +448,14 @@ void FrequencyPoint::UnsafeMergeFrom(const FrequencyPoint& from) {
 }
 
 void FrequencyPoint::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:FrequencyPoint)
+// @@protoc_insertion_point(generalized_copy_from_start:networkSpiceMessages.FrequencyPoint)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void FrequencyPoint::CopyFrom(const FrequencyPoint& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:FrequencyPoint)
+// @@protoc_insertion_point(class_specific_copy_from_start:networkSpiceMessages.FrequencyPoint)
   if (&from == this) return;
   Clear();
   UnsafeMergeFrom(from);
@@ -490,13 +494,13 @@ void FrequencyPoint::clear_frequency() {
   frequency_ = 0;
 }
 double FrequencyPoint::frequency() const {
-  // @@protoc_insertion_point(field_get:FrequencyPoint.frequency)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.FrequencyPoint.frequency)
   return frequency_;
 }
 void FrequencyPoint::set_frequency(double value) {
   
   frequency_ = value;
-  // @@protoc_insertion_point(field_set:FrequencyPoint.frequency)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.FrequencyPoint.frequency)
 }
 
 // optional double magnitude = 2;
@@ -504,13 +508,13 @@ void FrequencyPoint::clear_magnitude() {
   magnitude_ = 0;
 }
 double FrequencyPoint::magnitude() const {
-  // @@protoc_insertion_point(field_get:FrequencyPoint.magnitude)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.FrequencyPoint.magnitude)
   return magnitude_;
 }
 void FrequencyPoint::set_magnitude(double value) {
   
   magnitude_ = value;
-  // @@protoc_insertion_point(field_set:FrequencyPoint.magnitude)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.FrequencyPoint.magnitude)
 }
 
 // optional double phase = 3;
@@ -518,13 +522,13 @@ void FrequencyPoint::clear_phase() {
   phase_ = 0;
 }
 double FrequencyPoint::phase() const {
-  // @@protoc_insertion_point(field_get:FrequencyPoint.phase)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.FrequencyPoint.phase)
   return phase_;
 }
 void FrequencyPoint::set_phase(double value) {
   
   phase_ = value;
-  // @@protoc_insertion_point(field_set:FrequencyPoint.phase)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.FrequencyPoint.phase)
 }
 
 inline const FrequencyPoint* FrequencyPoint::internal_default_instance() {
@@ -543,7 +547,7 @@ TransientPoint::TransientPoint()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (this != internal_default_instance()) protobuf_InitDefaults_result_2eproto();
   SharedCtor();
-  // @@protoc_insertion_point(constructor:TransientPoint)
+  // @@protoc_insertion_point(constructor:networkSpiceMessages.TransientPoint)
 }
 
 void TransientPoint::InitAsDefaultInstance() {
@@ -554,7 +558,7 @@ TransientPoint::TransientPoint(const TransientPoint& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   UnsafeMergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:TransientPoint)
+  // @@protoc_insertion_point(copy_constructor:networkSpiceMessages.TransientPoint)
 }
 
 void TransientPoint::SharedCtor() {
@@ -564,7 +568,7 @@ void TransientPoint::SharedCtor() {
 }
 
 TransientPoint::~TransientPoint() {
-  // @@protoc_insertion_point(destructor:TransientPoint)
+  // @@protoc_insertion_point(destructor:networkSpiceMessages.TransientPoint)
   SharedDtor();
 }
 
@@ -597,7 +601,7 @@ TransientPoint* TransientPoint::New(::google::protobuf::Arena* arena) const {
 }
 
 void TransientPoint::Clear() {
-// @@protoc_insertion_point(message_clear_start:TransientPoint)
+// @@protoc_insertion_point(message_clear_start:networkSpiceMessages.TransientPoint)
 #if defined(__clang__)
 #define ZR_HELPER_(f) \
   _Pragma("clang diagnostic push") \
@@ -625,7 +629,7 @@ bool TransientPoint::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:TransientPoint)
+  // @@protoc_insertion_point(parse_start:networkSpiceMessages.TransientPoint)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -673,17 +677,17 @@ bool TransientPoint::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:TransientPoint)
+  // @@protoc_insertion_point(parse_success:networkSpiceMessages.TransientPoint)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:TransientPoint)
+  // @@protoc_insertion_point(parse_failure:networkSpiceMessages.TransientPoint)
   return false;
 #undef DO_
 }
 
 void TransientPoint::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:TransientPoint)
+  // @@protoc_insertion_point(serialize_start:networkSpiceMessages.TransientPoint)
   // optional double time = 1;
   if (this->time() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->time(), output);
@@ -694,13 +698,13 @@ void TransientPoint::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->value(), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:TransientPoint)
+  // @@protoc_insertion_point(serialize_end:networkSpiceMessages.TransientPoint)
 }
 
 ::google::protobuf::uint8* TransientPoint::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:TransientPoint)
+  // @@protoc_insertion_point(serialize_to_array_start:networkSpiceMessages.TransientPoint)
   // optional double time = 1;
   if (this->time() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->time(), target);
@@ -711,12 +715,12 @@ void TransientPoint::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->value(), target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:TransientPoint)
+  // @@protoc_insertion_point(serialize_to_array_end:networkSpiceMessages.TransientPoint)
   return target;
 }
 
 size_t TransientPoint::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:TransientPoint)
+// @@protoc_insertion_point(message_byte_size_start:networkSpiceMessages.TransientPoint)
   size_t total_size = 0;
 
   // optional double time = 1;
@@ -737,22 +741,22 @@ size_t TransientPoint::ByteSizeLong() const {
 }
 
 void TransientPoint::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:TransientPoint)
+// @@protoc_insertion_point(generalized_merge_from_start:networkSpiceMessages.TransientPoint)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const TransientPoint* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const TransientPoint>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:TransientPoint)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:networkSpiceMessages.TransientPoint)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:TransientPoint)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:networkSpiceMessages.TransientPoint)
     UnsafeMergeFrom(*source);
   }
 }
 
 void TransientPoint::MergeFrom(const TransientPoint& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:TransientPoint)
+// @@protoc_insertion_point(class_specific_merge_from_start:networkSpiceMessages.TransientPoint)
   if (GOOGLE_PREDICT_TRUE(&from != this)) {
     UnsafeMergeFrom(from);
   } else {
@@ -771,14 +775,14 @@ void TransientPoint::UnsafeMergeFrom(const TransientPoint& from) {
 }
 
 void TransientPoint::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:TransientPoint)
+// @@protoc_insertion_point(generalized_copy_from_start:networkSpiceMessages.TransientPoint)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void TransientPoint::CopyFrom(const TransientPoint& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:TransientPoint)
+// @@protoc_insertion_point(class_specific_copy_from_start:networkSpiceMessages.TransientPoint)
   if (&from == this) return;
   Clear();
   UnsafeMergeFrom(from);
@@ -816,13 +820,13 @@ void TransientPoint::clear_time() {
   time_ = 0;
 }
 double TransientPoint::time() const {
-  // @@protoc_insertion_point(field_get:TransientPoint.time)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.TransientPoint.time)
   return time_;
 }
 void TransientPoint::set_time(double value) {
   
   time_ = value;
-  // @@protoc_insertion_point(field_set:TransientPoint.time)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.TransientPoint.time)
 }
 
 // optional double value = 2;
@@ -830,13 +834,13 @@ void TransientPoint::clear_value() {
   value_ = 0;
 }
 double TransientPoint::value() const {
-  // @@protoc_insertion_point(field_get:TransientPoint.value)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.TransientPoint.value)
   return value_;
 }
 void TransientPoint::set_value(double value) {
   
   value_ = value;
-  // @@protoc_insertion_point(field_set:TransientPoint.value)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.TransientPoint.value)
 }
 
 inline const TransientPoint* TransientPoint::internal_default_instance() {
@@ -855,7 +859,7 @@ Results::Results()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (this != internal_default_instance()) protobuf_InitDefaults_result_2eproto();
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Results)
+  // @@protoc_insertion_point(constructor:networkSpiceMessages.Results)
 }
 
 void Results::InitAsDefaultInstance() {
@@ -866,7 +870,7 @@ Results::Results(const Results& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   UnsafeMergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:Results)
+  // @@protoc_insertion_point(copy_constructor:networkSpiceMessages.Results)
 }
 
 void Results::SharedCtor() {
@@ -874,7 +878,7 @@ void Results::SharedCtor() {
 }
 
 Results::~Results() {
-  // @@protoc_insertion_point(destructor:Results)
+  // @@protoc_insertion_point(destructor:networkSpiceMessages.Results)
   SharedDtor();
 }
 
@@ -907,7 +911,7 @@ Results* Results::New(::google::protobuf::Arena* arena) const {
 }
 
 void Results::Clear() {
-// @@protoc_insertion_point(message_clear_start:Results)
+// @@protoc_insertion_point(message_clear_start:networkSpiceMessages.Results)
   transientpoint_.Clear();
   frequencypoint_.Clear();
 }
@@ -916,13 +920,13 @@ bool Results::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Results)
+  // @@protoc_insertion_point(parse_start:networkSpiceMessages.Results)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .TransientPoint transientPoint = 1;
+      // repeated .networkSpiceMessages.TransientPoint transientPoint = 1;
       case 1: {
         if (tag == 10) {
           DO_(input->IncrementRecursionDepth());
@@ -938,7 +942,7 @@ bool Results::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .FrequencyPoint frequencyPoint = 2;
+      // repeated .networkSpiceMessages.FrequencyPoint frequencyPoint = 2;
       case 2: {
         if (tag == 18) {
           DO_(input->IncrementRecursionDepth());
@@ -967,59 +971,59 @@ bool Results::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Results)
+  // @@protoc_insertion_point(parse_success:networkSpiceMessages.Results)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Results)
+  // @@protoc_insertion_point(parse_failure:networkSpiceMessages.Results)
   return false;
 #undef DO_
 }
 
 void Results::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Results)
-  // repeated .TransientPoint transientPoint = 1;
+  // @@protoc_insertion_point(serialize_start:networkSpiceMessages.Results)
+  // repeated .networkSpiceMessages.TransientPoint transientPoint = 1;
   for (unsigned int i = 0, n = this->transientpoint_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->transientpoint(i), output);
   }
 
-  // repeated .FrequencyPoint frequencyPoint = 2;
+  // repeated .networkSpiceMessages.FrequencyPoint frequencyPoint = 2;
   for (unsigned int i = 0, n = this->frequencypoint_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->frequencypoint(i), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:Results)
+  // @@protoc_insertion_point(serialize_end:networkSpiceMessages.Results)
 }
 
 ::google::protobuf::uint8* Results::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Results)
-  // repeated .TransientPoint transientPoint = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:networkSpiceMessages.Results)
+  // repeated .networkSpiceMessages.TransientPoint transientPoint = 1;
   for (unsigned int i = 0, n = this->transientpoint_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         1, this->transientpoint(i), false, target);
   }
 
-  // repeated .FrequencyPoint frequencyPoint = 2;
+  // repeated .networkSpiceMessages.FrequencyPoint frequencyPoint = 2;
   for (unsigned int i = 0, n = this->frequencypoint_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         2, this->frequencypoint(i), false, target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:Results)
+  // @@protoc_insertion_point(serialize_to_array_end:networkSpiceMessages.Results)
   return target;
 }
 
 size_t Results::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Results)
+// @@protoc_insertion_point(message_byte_size_start:networkSpiceMessages.Results)
   size_t total_size = 0;
 
-  // repeated .TransientPoint transientPoint = 1;
+  // repeated .networkSpiceMessages.TransientPoint transientPoint = 1;
   {
     unsigned int count = this->transientpoint_size();
     total_size += 1UL * count;
@@ -1030,7 +1034,7 @@ size_t Results::ByteSizeLong() const {
     }
   }
 
-  // repeated .FrequencyPoint frequencyPoint = 2;
+  // repeated .networkSpiceMessages.FrequencyPoint frequencyPoint = 2;
   {
     unsigned int count = this->frequencypoint_size();
     total_size += 1UL * count;
@@ -1049,22 +1053,22 @@ size_t Results::ByteSizeLong() const {
 }
 
 void Results::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Results)
+// @@protoc_insertion_point(generalized_merge_from_start:networkSpiceMessages.Results)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const Results* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const Results>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Results)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:networkSpiceMessages.Results)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Results)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:networkSpiceMessages.Results)
     UnsafeMergeFrom(*source);
   }
 }
 
 void Results::MergeFrom(const Results& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Results)
+// @@protoc_insertion_point(class_specific_merge_from_start:networkSpiceMessages.Results)
   if (GOOGLE_PREDICT_TRUE(&from != this)) {
     UnsafeMergeFrom(from);
   } else {
@@ -1079,14 +1083,14 @@ void Results::UnsafeMergeFrom(const Results& from) {
 }
 
 void Results::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Results)
+// @@protoc_insertion_point(generalized_copy_from_start:networkSpiceMessages.Results)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void Results::CopyFrom(const Results& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Results)
+// @@protoc_insertion_point(class_specific_copy_from_start:networkSpiceMessages.Results)
   if (&from == this) return;
   Clear();
   UnsafeMergeFrom(from);
@@ -1119,63 +1123,63 @@ void Results::InternalSwap(Results* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Results
 
-// repeated .TransientPoint transientPoint = 1;
+// repeated .networkSpiceMessages.TransientPoint transientPoint = 1;
 int Results::transientpoint_size() const {
   return transientpoint_.size();
 }
 void Results::clear_transientpoint() {
   transientpoint_.Clear();
 }
-const ::TransientPoint& Results::transientpoint(int index) const {
-  // @@protoc_insertion_point(field_get:Results.transientPoint)
+const ::networkSpiceMessages::TransientPoint& Results::transientpoint(int index) const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Results.transientPoint)
   return transientpoint_.Get(index);
 }
-::TransientPoint* Results::mutable_transientpoint(int index) {
-  // @@protoc_insertion_point(field_mutable:Results.transientPoint)
+::networkSpiceMessages::TransientPoint* Results::mutable_transientpoint(int index) {
+  // @@protoc_insertion_point(field_mutable:networkSpiceMessages.Results.transientPoint)
   return transientpoint_.Mutable(index);
 }
-::TransientPoint* Results::add_transientpoint() {
-  // @@protoc_insertion_point(field_add:Results.transientPoint)
+::networkSpiceMessages::TransientPoint* Results::add_transientpoint() {
+  // @@protoc_insertion_point(field_add:networkSpiceMessages.Results.transientPoint)
   return transientpoint_.Add();
 }
-::google::protobuf::RepeatedPtrField< ::TransientPoint >*
+::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::TransientPoint >*
 Results::mutable_transientpoint() {
-  // @@protoc_insertion_point(field_mutable_list:Results.transientPoint)
+  // @@protoc_insertion_point(field_mutable_list:networkSpiceMessages.Results.transientPoint)
   return &transientpoint_;
 }
-const ::google::protobuf::RepeatedPtrField< ::TransientPoint >&
+const ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::TransientPoint >&
 Results::transientpoint() const {
-  // @@protoc_insertion_point(field_list:Results.transientPoint)
+  // @@protoc_insertion_point(field_list:networkSpiceMessages.Results.transientPoint)
   return transientpoint_;
 }
 
-// repeated .FrequencyPoint frequencyPoint = 2;
+// repeated .networkSpiceMessages.FrequencyPoint frequencyPoint = 2;
 int Results::frequencypoint_size() const {
   return frequencypoint_.size();
 }
 void Results::clear_frequencypoint() {
   frequencypoint_.Clear();
 }
-const ::FrequencyPoint& Results::frequencypoint(int index) const {
-  // @@protoc_insertion_point(field_get:Results.frequencyPoint)
+const ::networkSpiceMessages::FrequencyPoint& Results::frequencypoint(int index) const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Results.frequencyPoint)
   return frequencypoint_.Get(index);
 }
-::FrequencyPoint* Results::mutable_frequencypoint(int index) {
-  // @@protoc_insertion_point(field_mutable:Results.frequencyPoint)
+::networkSpiceMessages::FrequencyPoint* Results::mutable_frequencypoint(int index) {
+  // @@protoc_insertion_point(field_mutable:networkSpiceMessages.Results.frequencyPoint)
   return frequencypoint_.Mutable(index);
 }
-::FrequencyPoint* Results::add_frequencypoint() {
-  // @@protoc_insertion_point(field_add:Results.frequencyPoint)
+::networkSpiceMessages::FrequencyPoint* Results::add_frequencypoint() {
+  // @@protoc_insertion_point(field_add:networkSpiceMessages.Results.frequencyPoint)
   return frequencypoint_.Add();
 }
-::google::protobuf::RepeatedPtrField< ::FrequencyPoint >*
+::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::FrequencyPoint >*
 Results::mutable_frequencypoint() {
-  // @@protoc_insertion_point(field_mutable_list:Results.frequencyPoint)
+  // @@protoc_insertion_point(field_mutable_list:networkSpiceMessages.Results.frequencyPoint)
   return &frequencypoint_;
 }
-const ::google::protobuf::RepeatedPtrField< ::FrequencyPoint >&
+const ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::FrequencyPoint >&
 Results::frequencypoint() const {
-  // @@protoc_insertion_point(field_list:Results.frequencyPoint)
+  // @@protoc_insertion_point(field_list:networkSpiceMessages.Results.frequencyPoint)
   return frequencypoint_;
 }
 
@@ -1185,5 +1189,7 @@ inline const Results* Results::internal_default_instance() {
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace networkSpiceMessages
 
 // @@protoc_insertion_point(global_scope)

@@ -29,6 +29,8 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
+namespace networkSpiceMessages {
+
 // Internal implementation detail -- do not call these.
 void protobuf_AddDesc_result_2eproto();
 void protobuf_InitDefaults_result_2eproto();
@@ -41,7 +43,7 @@ class TransientPoint;
 
 // ===================================================================
 
-class FrequencyPoint : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:FrequencyPoint) */ {
+class FrequencyPoint : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:networkSpiceMessages.FrequencyPoint) */ {
  public:
   FrequencyPoint();
   virtual ~FrequencyPoint();
@@ -122,7 +124,7 @@ class FrequencyPoint : public ::google::protobuf::Message /* @@protoc_insertion_
   double phase() const;
   void set_phase(double value);
 
-  // @@protoc_insertion_point(class_scope:FrequencyPoint)
+  // @@protoc_insertion_point(class_scope:networkSpiceMessages.FrequencyPoint)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -141,7 +143,7 @@ extern ::google::protobuf::internal::ExplicitlyConstructed<FrequencyPoint> Frequ
 
 // -------------------------------------------------------------------
 
-class TransientPoint : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:TransientPoint) */ {
+class TransientPoint : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:networkSpiceMessages.TransientPoint) */ {
  public:
   TransientPoint();
   virtual ~TransientPoint();
@@ -216,7 +218,7 @@ class TransientPoint : public ::google::protobuf::Message /* @@protoc_insertion_
   double value() const;
   void set_value(double value);
 
-  // @@protoc_insertion_point(class_scope:TransientPoint)
+  // @@protoc_insertion_point(class_scope:networkSpiceMessages.TransientPoint)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -234,7 +236,7 @@ extern ::google::protobuf::internal::ExplicitlyConstructed<TransientPoint> Trans
 
 // -------------------------------------------------------------------
 
-class Results : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Results) */ {
+class Results : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:networkSpiceMessages.Results) */ {
  public:
   Results();
   virtual ~Results();
@@ -297,36 +299,36 @@ class Results : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // repeated .TransientPoint transientPoint = 1;
+  // repeated .networkSpiceMessages.TransientPoint transientPoint = 1;
   int transientpoint_size() const;
   void clear_transientpoint();
   static const int kTransientPointFieldNumber = 1;
-  const ::TransientPoint& transientpoint(int index) const;
-  ::TransientPoint* mutable_transientpoint(int index);
-  ::TransientPoint* add_transientpoint();
-  ::google::protobuf::RepeatedPtrField< ::TransientPoint >*
+  const ::networkSpiceMessages::TransientPoint& transientpoint(int index) const;
+  ::networkSpiceMessages::TransientPoint* mutable_transientpoint(int index);
+  ::networkSpiceMessages::TransientPoint* add_transientpoint();
+  ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::TransientPoint >*
       mutable_transientpoint();
-  const ::google::protobuf::RepeatedPtrField< ::TransientPoint >&
+  const ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::TransientPoint >&
       transientpoint() const;
 
-  // repeated .FrequencyPoint frequencyPoint = 2;
+  // repeated .networkSpiceMessages.FrequencyPoint frequencyPoint = 2;
   int frequencypoint_size() const;
   void clear_frequencypoint();
   static const int kFrequencyPointFieldNumber = 2;
-  const ::FrequencyPoint& frequencypoint(int index) const;
-  ::FrequencyPoint* mutable_frequencypoint(int index);
-  ::FrequencyPoint* add_frequencypoint();
-  ::google::protobuf::RepeatedPtrField< ::FrequencyPoint >*
+  const ::networkSpiceMessages::FrequencyPoint& frequencypoint(int index) const;
+  ::networkSpiceMessages::FrequencyPoint* mutable_frequencypoint(int index);
+  ::networkSpiceMessages::FrequencyPoint* add_frequencypoint();
+  ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::FrequencyPoint >*
       mutable_frequencypoint();
-  const ::google::protobuf::RepeatedPtrField< ::FrequencyPoint >&
+  const ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::FrequencyPoint >&
       frequencypoint() const;
 
-  // @@protoc_insertion_point(class_scope:Results)
+  // @@protoc_insertion_point(class_scope:networkSpiceMessages.Results)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::TransientPoint > transientpoint_;
-  ::google::protobuf::RepeatedPtrField< ::FrequencyPoint > frequencypoint_;
+  ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::TransientPoint > transientpoint_;
+  ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::FrequencyPoint > frequencypoint_;
   mutable int _cached_size_;
   friend void  protobuf_InitDefaults_result_2eproto_impl();
   friend void  protobuf_AddDesc_result_2eproto_impl();
@@ -350,13 +352,13 @@ inline void FrequencyPoint::clear_frequency() {
   frequency_ = 0;
 }
 inline double FrequencyPoint::frequency() const {
-  // @@protoc_insertion_point(field_get:FrequencyPoint.frequency)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.FrequencyPoint.frequency)
   return frequency_;
 }
 inline void FrequencyPoint::set_frequency(double value) {
   
   frequency_ = value;
-  // @@protoc_insertion_point(field_set:FrequencyPoint.frequency)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.FrequencyPoint.frequency)
 }
 
 // optional double magnitude = 2;
@@ -364,13 +366,13 @@ inline void FrequencyPoint::clear_magnitude() {
   magnitude_ = 0;
 }
 inline double FrequencyPoint::magnitude() const {
-  // @@protoc_insertion_point(field_get:FrequencyPoint.magnitude)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.FrequencyPoint.magnitude)
   return magnitude_;
 }
 inline void FrequencyPoint::set_magnitude(double value) {
   
   magnitude_ = value;
-  // @@protoc_insertion_point(field_set:FrequencyPoint.magnitude)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.FrequencyPoint.magnitude)
 }
 
 // optional double phase = 3;
@@ -378,13 +380,13 @@ inline void FrequencyPoint::clear_phase() {
   phase_ = 0;
 }
 inline double FrequencyPoint::phase() const {
-  // @@protoc_insertion_point(field_get:FrequencyPoint.phase)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.FrequencyPoint.phase)
   return phase_;
 }
 inline void FrequencyPoint::set_phase(double value) {
   
   phase_ = value;
-  // @@protoc_insertion_point(field_set:FrequencyPoint.phase)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.FrequencyPoint.phase)
 }
 
 inline const FrequencyPoint* FrequencyPoint::internal_default_instance() {
@@ -399,13 +401,13 @@ inline void TransientPoint::clear_time() {
   time_ = 0;
 }
 inline double TransientPoint::time() const {
-  // @@protoc_insertion_point(field_get:TransientPoint.time)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.TransientPoint.time)
   return time_;
 }
 inline void TransientPoint::set_time(double value) {
   
   time_ = value;
-  // @@protoc_insertion_point(field_set:TransientPoint.time)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.TransientPoint.time)
 }
 
 // optional double value = 2;
@@ -413,13 +415,13 @@ inline void TransientPoint::clear_value() {
   value_ = 0;
 }
 inline double TransientPoint::value() const {
-  // @@protoc_insertion_point(field_get:TransientPoint.value)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.TransientPoint.value)
   return value_;
 }
 inline void TransientPoint::set_value(double value) {
   
   value_ = value;
-  // @@protoc_insertion_point(field_set:TransientPoint.value)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.TransientPoint.value)
 }
 
 inline const TransientPoint* TransientPoint::internal_default_instance() {
@@ -429,63 +431,63 @@ inline const TransientPoint* TransientPoint::internal_default_instance() {
 
 // Results
 
-// repeated .TransientPoint transientPoint = 1;
+// repeated .networkSpiceMessages.TransientPoint transientPoint = 1;
 inline int Results::transientpoint_size() const {
   return transientpoint_.size();
 }
 inline void Results::clear_transientpoint() {
   transientpoint_.Clear();
 }
-inline const ::TransientPoint& Results::transientpoint(int index) const {
-  // @@protoc_insertion_point(field_get:Results.transientPoint)
+inline const ::networkSpiceMessages::TransientPoint& Results::transientpoint(int index) const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Results.transientPoint)
   return transientpoint_.Get(index);
 }
-inline ::TransientPoint* Results::mutable_transientpoint(int index) {
-  // @@protoc_insertion_point(field_mutable:Results.transientPoint)
+inline ::networkSpiceMessages::TransientPoint* Results::mutable_transientpoint(int index) {
+  // @@protoc_insertion_point(field_mutable:networkSpiceMessages.Results.transientPoint)
   return transientpoint_.Mutable(index);
 }
-inline ::TransientPoint* Results::add_transientpoint() {
-  // @@protoc_insertion_point(field_add:Results.transientPoint)
+inline ::networkSpiceMessages::TransientPoint* Results::add_transientpoint() {
+  // @@protoc_insertion_point(field_add:networkSpiceMessages.Results.transientPoint)
   return transientpoint_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::TransientPoint >*
+inline ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::TransientPoint >*
 Results::mutable_transientpoint() {
-  // @@protoc_insertion_point(field_mutable_list:Results.transientPoint)
+  // @@protoc_insertion_point(field_mutable_list:networkSpiceMessages.Results.transientPoint)
   return &transientpoint_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::TransientPoint >&
+inline const ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::TransientPoint >&
 Results::transientpoint() const {
-  // @@protoc_insertion_point(field_list:Results.transientPoint)
+  // @@protoc_insertion_point(field_list:networkSpiceMessages.Results.transientPoint)
   return transientpoint_;
 }
 
-// repeated .FrequencyPoint frequencyPoint = 2;
+// repeated .networkSpiceMessages.FrequencyPoint frequencyPoint = 2;
 inline int Results::frequencypoint_size() const {
   return frequencypoint_.size();
 }
 inline void Results::clear_frequencypoint() {
   frequencypoint_.Clear();
 }
-inline const ::FrequencyPoint& Results::frequencypoint(int index) const {
-  // @@protoc_insertion_point(field_get:Results.frequencyPoint)
+inline const ::networkSpiceMessages::FrequencyPoint& Results::frequencypoint(int index) const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Results.frequencyPoint)
   return frequencypoint_.Get(index);
 }
-inline ::FrequencyPoint* Results::mutable_frequencypoint(int index) {
-  // @@protoc_insertion_point(field_mutable:Results.frequencyPoint)
+inline ::networkSpiceMessages::FrequencyPoint* Results::mutable_frequencypoint(int index) {
+  // @@protoc_insertion_point(field_mutable:networkSpiceMessages.Results.frequencyPoint)
   return frequencypoint_.Mutable(index);
 }
-inline ::FrequencyPoint* Results::add_frequencypoint() {
-  // @@protoc_insertion_point(field_add:Results.frequencyPoint)
+inline ::networkSpiceMessages::FrequencyPoint* Results::add_frequencypoint() {
+  // @@protoc_insertion_point(field_add:networkSpiceMessages.Results.frequencyPoint)
   return frequencypoint_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::FrequencyPoint >*
+inline ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::FrequencyPoint >*
 Results::mutable_frequencypoint() {
-  // @@protoc_insertion_point(field_mutable_list:Results.frequencyPoint)
+  // @@protoc_insertion_point(field_mutable_list:networkSpiceMessages.Results.frequencyPoint)
   return &frequencypoint_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::FrequencyPoint >&
+inline const ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::FrequencyPoint >&
 Results::frequencypoint() const {
-  // @@protoc_insertion_point(field_list:Results.frequencyPoint)
+  // @@protoc_insertion_point(field_list:networkSpiceMessages.Results.frequencyPoint)
   return frequencypoint_;
 }
 
@@ -499,6 +501,8 @@ inline const Results* Results::internal_default_instance() {
 
 
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace networkSpiceMessages
 
 // @@protoc_insertion_point(global_scope)
 

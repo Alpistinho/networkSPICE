@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package networkSpiceMessages;
+
 message FrequencyPoint {
 
 	double frequency = 1;

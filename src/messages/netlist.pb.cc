@@ -17,6 +17,8 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
+namespace networkSpiceMessages {
+
 namespace {
 
 const ::google::protobuf::Descriptor* ConfigurationLine_descriptor_ = NULL;
@@ -101,7 +103,7 @@ void protobuf_ShutdownFile_netlist_2eproto() {
 void protobuf_InitDefaults_netlist_2eproto_impl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::protobuf_InitDefaults_component_2eproto();
+  ::networkSpiceMessages::protobuf_InitDefaults_component_2eproto();
   ConfigurationLine_default_instance_.DefaultConstruct();
   Netlist_default_instance_.DefaultConstruct();
   ConfigurationLine_default_instance_.get_mutable()->InitAsDefaultInstance();
@@ -118,16 +120,18 @@ void protobuf_AddDesc_netlist_2eproto_impl() {
 
   protobuf_InitDefaults_netlist_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\rnetlist.proto\032\017component.proto\"^\n\021Conf"
-    "igurationLine\022\035\n\004type\030\001 \001(\0162\017.Simulation"
-    "Type\022\r\n\005begin\030\002 \001(\001\022\013\n\003end\030\003 \001(\001\022\016\n\006poin"
-    "ts\030\004 \001(\003\"L\n\007Netlist\022\035\n\tcomponent\030\001 \003(\0132\n"
-    ".Component\022\"\n\006config\030\002 \001(\0132\022.Configurati"
-    "onLine*.\n\016SimulationType\022\r\n\tFrequency\020\000\022"
-    "\r\n\tTransient\020\001b\006proto3", 262);
+    "\n\rnetlist.proto\022\024networkSpiceMessages\032\017c"
+    "omponent.proto\"s\n\021ConfigurationLine\0222\n\004t"
+    "ype\030\001 \001(\0162$.networkSpiceMessages.Simulat"
+    "ionType\022\r\n\005begin\030\002 \001(\001\022\013\n\003end\030\003 \001(\001\022\016\n\006p"
+    "oints\030\004 \001(\003\"v\n\007Netlist\0222\n\tcomponent\030\001 \003("
+    "\0132\037.networkSpiceMessages.Component\0227\n\006co"
+    "nfig\030\002 \001(\0132\'.networkSpiceMessages.Config"
+    "urationLine*.\n\016SimulationType\022\r\n\tFrequen"
+    "cy\020\000\022\r\n\tTransient\020\001b\006proto3", 347);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "netlist.proto", &protobuf_RegisterTypes);
-  ::protobuf_AddDesc_component_2eproto();
+  ::networkSpiceMessages::protobuf_AddDesc_component_2eproto();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_netlist_2eproto);
 }
 
@@ -180,7 +184,7 @@ ConfigurationLine::ConfigurationLine()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (this != internal_default_instance()) protobuf_InitDefaults_netlist_2eproto();
   SharedCtor();
-  // @@protoc_insertion_point(constructor:ConfigurationLine)
+  // @@protoc_insertion_point(constructor:networkSpiceMessages.ConfigurationLine)
 }
 
 void ConfigurationLine::InitAsDefaultInstance() {
@@ -191,7 +195,7 @@ ConfigurationLine::ConfigurationLine(const ConfigurationLine& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   UnsafeMergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:ConfigurationLine)
+  // @@protoc_insertion_point(copy_constructor:networkSpiceMessages.ConfigurationLine)
 }
 
 void ConfigurationLine::SharedCtor() {
@@ -201,7 +205,7 @@ void ConfigurationLine::SharedCtor() {
 }
 
 ConfigurationLine::~ConfigurationLine() {
-  // @@protoc_insertion_point(destructor:ConfigurationLine)
+  // @@protoc_insertion_point(destructor:networkSpiceMessages.ConfigurationLine)
   SharedDtor();
 }
 
@@ -234,7 +238,7 @@ ConfigurationLine* ConfigurationLine::New(::google::protobuf::Arena* arena) cons
 }
 
 void ConfigurationLine::Clear() {
-// @@protoc_insertion_point(message_clear_start:ConfigurationLine)
+// @@protoc_insertion_point(message_clear_start:networkSpiceMessages.ConfigurationLine)
 #if defined(__clang__)
 #define ZR_HELPER_(f) \
   _Pragma("clang diagnostic push") \
@@ -262,20 +266,20 @@ bool ConfigurationLine::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:ConfigurationLine)
+  // @@protoc_insertion_point(parse_start:networkSpiceMessages.ConfigurationLine)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .SimulationType type = 1;
+      // optional .networkSpiceMessages.SimulationType type = 1;
       case 1: {
         if (tag == 8) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_type(static_cast< ::SimulationType >(value));
+          set_type(static_cast< ::networkSpiceMessages::SimulationType >(value));
         } else {
           goto handle_unusual;
         }
@@ -341,18 +345,18 @@ bool ConfigurationLine::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:ConfigurationLine)
+  // @@protoc_insertion_point(parse_success:networkSpiceMessages.ConfigurationLine)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:ConfigurationLine)
+  // @@protoc_insertion_point(parse_failure:networkSpiceMessages.ConfigurationLine)
   return false;
 #undef DO_
 }
 
 void ConfigurationLine::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:ConfigurationLine)
-  // optional .SimulationType type = 1;
+  // @@protoc_insertion_point(serialize_start:networkSpiceMessages.ConfigurationLine)
+  // optional .networkSpiceMessages.SimulationType type = 1;
   if (this->type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->type(), output);
@@ -373,14 +377,14 @@ void ConfigurationLine::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt64(4, this->points(), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:ConfigurationLine)
+  // @@protoc_insertion_point(serialize_end:networkSpiceMessages.ConfigurationLine)
 }
 
 ::google::protobuf::uint8* ConfigurationLine::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:ConfigurationLine)
-  // optional .SimulationType type = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:networkSpiceMessages.ConfigurationLine)
+  // optional .networkSpiceMessages.SimulationType type = 1;
   if (this->type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->type(), target);
@@ -401,15 +405,15 @@ void ConfigurationLine::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(4, this->points(), target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:ConfigurationLine)
+  // @@protoc_insertion_point(serialize_to_array_end:networkSpiceMessages.ConfigurationLine)
   return target;
 }
 
 size_t ConfigurationLine::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ConfigurationLine)
+// @@protoc_insertion_point(message_byte_size_start:networkSpiceMessages.ConfigurationLine)
   size_t total_size = 0;
 
-  // optional .SimulationType type = 1;
+  // optional .networkSpiceMessages.SimulationType type = 1;
   if (this->type() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
@@ -440,22 +444,22 @@ size_t ConfigurationLine::ByteSizeLong() const {
 }
 
 void ConfigurationLine::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:ConfigurationLine)
+// @@protoc_insertion_point(generalized_merge_from_start:networkSpiceMessages.ConfigurationLine)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const ConfigurationLine* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const ConfigurationLine>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ConfigurationLine)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:networkSpiceMessages.ConfigurationLine)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:ConfigurationLine)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:networkSpiceMessages.ConfigurationLine)
     UnsafeMergeFrom(*source);
   }
 }
 
 void ConfigurationLine::MergeFrom(const ConfigurationLine& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ConfigurationLine)
+// @@protoc_insertion_point(class_specific_merge_from_start:networkSpiceMessages.ConfigurationLine)
   if (GOOGLE_PREDICT_TRUE(&from != this)) {
     UnsafeMergeFrom(from);
   } else {
@@ -480,14 +484,14 @@ void ConfigurationLine::UnsafeMergeFrom(const ConfigurationLine& from) {
 }
 
 void ConfigurationLine::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:ConfigurationLine)
+// @@protoc_insertion_point(generalized_copy_from_start:networkSpiceMessages.ConfigurationLine)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void ConfigurationLine::CopyFrom(const ConfigurationLine& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ConfigurationLine)
+// @@protoc_insertion_point(class_specific_copy_from_start:networkSpiceMessages.ConfigurationLine)
   if (&from == this) return;
   Clear();
   UnsafeMergeFrom(from);
@@ -522,18 +526,18 @@ void ConfigurationLine::InternalSwap(ConfigurationLine* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ConfigurationLine
 
-// optional .SimulationType type = 1;
+// optional .networkSpiceMessages.SimulationType type = 1;
 void ConfigurationLine::clear_type() {
   type_ = 0;
 }
-::SimulationType ConfigurationLine::type() const {
-  // @@protoc_insertion_point(field_get:ConfigurationLine.type)
-  return static_cast< ::SimulationType >(type_);
+::networkSpiceMessages::SimulationType ConfigurationLine::type() const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.ConfigurationLine.type)
+  return static_cast< ::networkSpiceMessages::SimulationType >(type_);
 }
-void ConfigurationLine::set_type(::SimulationType value) {
+void ConfigurationLine::set_type(::networkSpiceMessages::SimulationType value) {
   
   type_ = value;
-  // @@protoc_insertion_point(field_set:ConfigurationLine.type)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.ConfigurationLine.type)
 }
 
 // optional double begin = 2;
@@ -541,13 +545,13 @@ void ConfigurationLine::clear_begin() {
   begin_ = 0;
 }
 double ConfigurationLine::begin() const {
-  // @@protoc_insertion_point(field_get:ConfigurationLine.begin)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.ConfigurationLine.begin)
   return begin_;
 }
 void ConfigurationLine::set_begin(double value) {
   
   begin_ = value;
-  // @@protoc_insertion_point(field_set:ConfigurationLine.begin)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.ConfigurationLine.begin)
 }
 
 // optional double end = 3;
@@ -555,13 +559,13 @@ void ConfigurationLine::clear_end() {
   end_ = 0;
 }
 double ConfigurationLine::end() const {
-  // @@protoc_insertion_point(field_get:ConfigurationLine.end)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.ConfigurationLine.end)
   return end_;
 }
 void ConfigurationLine::set_end(double value) {
   
   end_ = value;
-  // @@protoc_insertion_point(field_set:ConfigurationLine.end)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.ConfigurationLine.end)
 }
 
 // optional int64 points = 4;
@@ -569,13 +573,13 @@ void ConfigurationLine::clear_points() {
   points_ = GOOGLE_LONGLONG(0);
 }
 ::google::protobuf::int64 ConfigurationLine::points() const {
-  // @@protoc_insertion_point(field_get:ConfigurationLine.points)
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.ConfigurationLine.points)
   return points_;
 }
 void ConfigurationLine::set_points(::google::protobuf::int64 value) {
   
   points_ = value;
-  // @@protoc_insertion_point(field_set:ConfigurationLine.points)
+  // @@protoc_insertion_point(field_set:networkSpiceMessages.ConfigurationLine.points)
 }
 
 inline const ConfigurationLine* ConfigurationLine::internal_default_instance() {
@@ -594,12 +598,12 @@ Netlist::Netlist()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (this != internal_default_instance()) protobuf_InitDefaults_netlist_2eproto();
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Netlist)
+  // @@protoc_insertion_point(constructor:networkSpiceMessages.Netlist)
 }
 
 void Netlist::InitAsDefaultInstance() {
-  config_ = const_cast< ::ConfigurationLine*>(
-      ::ConfigurationLine::internal_default_instance());
+  config_ = const_cast< ::networkSpiceMessages::ConfigurationLine*>(
+      ::networkSpiceMessages::ConfigurationLine::internal_default_instance());
 }
 
 Netlist::Netlist(const Netlist& from)
@@ -607,7 +611,7 @@ Netlist::Netlist(const Netlist& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   UnsafeMergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:Netlist)
+  // @@protoc_insertion_point(copy_constructor:networkSpiceMessages.Netlist)
 }
 
 void Netlist::SharedCtor() {
@@ -616,7 +620,7 @@ void Netlist::SharedCtor() {
 }
 
 Netlist::~Netlist() {
-  // @@protoc_insertion_point(destructor:Netlist)
+  // @@protoc_insertion_point(destructor:networkSpiceMessages.Netlist)
   SharedDtor();
 }
 
@@ -652,7 +656,7 @@ Netlist* Netlist::New(::google::protobuf::Arena* arena) const {
 }
 
 void Netlist::Clear() {
-// @@protoc_insertion_point(message_clear_start:Netlist)
+// @@protoc_insertion_point(message_clear_start:networkSpiceMessages.Netlist)
   if (GetArenaNoVirtual() == NULL && config_ != NULL) delete config_;
   config_ = NULL;
   component_.Clear();
@@ -662,13 +666,13 @@ bool Netlist::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Netlist)
+  // @@protoc_insertion_point(parse_start:networkSpiceMessages.Netlist)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .Component component = 1;
+      // repeated .networkSpiceMessages.Component component = 1;
       case 1: {
         if (tag == 10) {
           DO_(input->IncrementRecursionDepth());
@@ -684,7 +688,7 @@ bool Netlist::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .ConfigurationLine config = 2;
+      // optional .networkSpiceMessages.ConfigurationLine config = 2;
       case 2: {
         if (tag == 18) {
          parse_config:
@@ -710,66 +714,66 @@ bool Netlist::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Netlist)
+  // @@protoc_insertion_point(parse_success:networkSpiceMessages.Netlist)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Netlist)
+  // @@protoc_insertion_point(parse_failure:networkSpiceMessages.Netlist)
   return false;
 #undef DO_
 }
 
 void Netlist::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Netlist)
-  // repeated .Component component = 1;
+  // @@protoc_insertion_point(serialize_start:networkSpiceMessages.Netlist)
+  // repeated .networkSpiceMessages.Component component = 1;
   for (unsigned int i = 0, n = this->component_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->component(i), output);
   }
 
-  // optional .ConfigurationLine config = 2;
+  // optional .networkSpiceMessages.ConfigurationLine config = 2;
   if (this->has_config()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *this->config_, output);
   }
 
-  // @@protoc_insertion_point(serialize_end:Netlist)
+  // @@protoc_insertion_point(serialize_end:networkSpiceMessages.Netlist)
 }
 
 ::google::protobuf::uint8* Netlist::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Netlist)
-  // repeated .Component component = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:networkSpiceMessages.Netlist)
+  // repeated .networkSpiceMessages.Component component = 1;
   for (unsigned int i = 0, n = this->component_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         1, this->component(i), false, target);
   }
 
-  // optional .ConfigurationLine config = 2;
+  // optional .networkSpiceMessages.ConfigurationLine config = 2;
   if (this->has_config()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         2, *this->config_, false, target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:Netlist)
+  // @@protoc_insertion_point(serialize_to_array_end:networkSpiceMessages.Netlist)
   return target;
 }
 
 size_t Netlist::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Netlist)
+// @@protoc_insertion_point(message_byte_size_start:networkSpiceMessages.Netlist)
   size_t total_size = 0;
 
-  // optional .ConfigurationLine config = 2;
+  // optional .networkSpiceMessages.ConfigurationLine config = 2;
   if (this->has_config()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->config_);
   }
 
-  // repeated .Component component = 1;
+  // repeated .networkSpiceMessages.Component component = 1;
   {
     unsigned int count = this->component_size();
     total_size += 1UL * count;
@@ -788,22 +792,22 @@ size_t Netlist::ByteSizeLong() const {
 }
 
 void Netlist::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Netlist)
+// @@protoc_insertion_point(generalized_merge_from_start:networkSpiceMessages.Netlist)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const Netlist* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const Netlist>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Netlist)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:networkSpiceMessages.Netlist)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Netlist)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:networkSpiceMessages.Netlist)
     UnsafeMergeFrom(*source);
   }
 }
 
 void Netlist::MergeFrom(const Netlist& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Netlist)
+// @@protoc_insertion_point(class_specific_merge_from_start:networkSpiceMessages.Netlist)
   if (GOOGLE_PREDICT_TRUE(&from != this)) {
     UnsafeMergeFrom(from);
   } else {
@@ -815,19 +819,19 @@ void Netlist::UnsafeMergeFrom(const Netlist& from) {
   GOOGLE_DCHECK(&from != this);
   component_.MergeFrom(from.component_);
   if (from.has_config()) {
-    mutable_config()->::ConfigurationLine::MergeFrom(from.config());
+    mutable_config()->::networkSpiceMessages::ConfigurationLine::MergeFrom(from.config());
   }
 }
 
 void Netlist::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Netlist)
+// @@protoc_insertion_point(generalized_copy_from_start:networkSpiceMessages.Netlist)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void Netlist::CopyFrom(const Netlist& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Netlist)
+// @@protoc_insertion_point(class_specific_copy_from_start:networkSpiceMessages.Netlist)
   if (&from == this) return;
   Clear();
   UnsafeMergeFrom(from);
@@ -860,37 +864,37 @@ void Netlist::InternalSwap(Netlist* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Netlist
 
-// repeated .Component component = 1;
+// repeated .networkSpiceMessages.Component component = 1;
 int Netlist::component_size() const {
   return component_.size();
 }
 void Netlist::clear_component() {
   component_.Clear();
 }
-const ::Component& Netlist::component(int index) const {
-  // @@protoc_insertion_point(field_get:Netlist.component)
+const ::networkSpiceMessages::Component& Netlist::component(int index) const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Netlist.component)
   return component_.Get(index);
 }
-::Component* Netlist::mutable_component(int index) {
-  // @@protoc_insertion_point(field_mutable:Netlist.component)
+::networkSpiceMessages::Component* Netlist::mutable_component(int index) {
+  // @@protoc_insertion_point(field_mutable:networkSpiceMessages.Netlist.component)
   return component_.Mutable(index);
 }
-::Component* Netlist::add_component() {
-  // @@protoc_insertion_point(field_add:Netlist.component)
+::networkSpiceMessages::Component* Netlist::add_component() {
+  // @@protoc_insertion_point(field_add:networkSpiceMessages.Netlist.component)
   return component_.Add();
 }
-::google::protobuf::RepeatedPtrField< ::Component >*
+::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::Component >*
 Netlist::mutable_component() {
-  // @@protoc_insertion_point(field_mutable_list:Netlist.component)
+  // @@protoc_insertion_point(field_mutable_list:networkSpiceMessages.Netlist.component)
   return &component_;
 }
-const ::google::protobuf::RepeatedPtrField< ::Component >&
+const ::google::protobuf::RepeatedPtrField< ::networkSpiceMessages::Component >&
 Netlist::component() const {
-  // @@protoc_insertion_point(field_list:Netlist.component)
+  // @@protoc_insertion_point(field_list:networkSpiceMessages.Netlist.component)
   return component_;
 }
 
-// optional .ConfigurationLine config = 2;
+// optional .networkSpiceMessages.ConfigurationLine config = 2;
 bool Netlist::has_config() const {
   return this != internal_default_instance() && config_ != NULL;
 }
@@ -898,27 +902,27 @@ void Netlist::clear_config() {
   if (GetArenaNoVirtual() == NULL && config_ != NULL) delete config_;
   config_ = NULL;
 }
-const ::ConfigurationLine& Netlist::config() const {
-  // @@protoc_insertion_point(field_get:Netlist.config)
+const ::networkSpiceMessages::ConfigurationLine& Netlist::config() const {
+  // @@protoc_insertion_point(field_get:networkSpiceMessages.Netlist.config)
   return config_ != NULL ? *config_
-                         : *::ConfigurationLine::internal_default_instance();
+                         : *::networkSpiceMessages::ConfigurationLine::internal_default_instance();
 }
-::ConfigurationLine* Netlist::mutable_config() {
+::networkSpiceMessages::ConfigurationLine* Netlist::mutable_config() {
   
   if (config_ == NULL) {
-    config_ = new ::ConfigurationLine;
+    config_ = new ::networkSpiceMessages::ConfigurationLine;
   }
-  // @@protoc_insertion_point(field_mutable:Netlist.config)
+  // @@protoc_insertion_point(field_mutable:networkSpiceMessages.Netlist.config)
   return config_;
 }
-::ConfigurationLine* Netlist::release_config() {
-  // @@protoc_insertion_point(field_release:Netlist.config)
+::networkSpiceMessages::ConfigurationLine* Netlist::release_config() {
+  // @@protoc_insertion_point(field_release:networkSpiceMessages.Netlist.config)
   
-  ::ConfigurationLine* temp = config_;
+  ::networkSpiceMessages::ConfigurationLine* temp = config_;
   config_ = NULL;
   return temp;
 }
-void Netlist::set_allocated_config(::ConfigurationLine* config) {
+void Netlist::set_allocated_config(::networkSpiceMessages::ConfigurationLine* config) {
   delete config_;
   config_ = config;
   if (config) {
@@ -926,7 +930,7 @@ void Netlist::set_allocated_config(::ConfigurationLine* config) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:Netlist.config)
+  // @@protoc_insertion_point(field_set_allocated:networkSpiceMessages.Netlist.config)
 }
 
 inline const Netlist* Netlist::internal_default_instance() {
@@ -935,5 +939,7 @@ inline const Netlist* Netlist::internal_default_instance() {
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace networkSpiceMessages
 
 // @@protoc_insertion_point(global_scope)
