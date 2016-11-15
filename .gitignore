@@ -51,7 +51,6 @@ Temporary Items
 CMakeCache.txt
 Makefile
 *.cmake
-
+messages/CMakeFiles/*
 build/*
-lib/*
 CMakeFiles/*
