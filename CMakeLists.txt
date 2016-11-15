@@ -15,10 +15,10 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/bin)
 
 
-add_executable(netSpice ${SPICELIB_SOURCES})
-add_executable(simulationNode ${SIMULATIONNODE_SOURCES})
 add_library(netSpiceShared SHARED ${SPICELIB_SOURCES})
 add_library(netSpiceStatic STATIC ${SPICELIB_SOURCES})
+add_executable(netSpice ${SPICELIB_SOURCES})
+add_executable(simulationNode ${SIMULATIONNODE_SOURCES})
 
 
 target_include_directories(netSpice PRIVATE include/spiceLib)
@@ -31,4 +31,4 @@ target_include_directories(simulationNode PRIVATE build/messages)
 
 MESSAGE( STATUS "CMAKE_BINARY_DIR: " ${CMAKE_BINARY_DIR}/build/messages )
 
-Target_Link_Libraries(simulationNode ${CMAKE_SOURCE_DIR}/build/lib/libnetSpiceStatic.a messages ${CMAKE_THREAD_LIBS_INIT} ${PROTOBUF_LIBRARY})
+Target_Link_Libraries(simulationNode netSpiceStatic messages ${CMAKE_THREAD_LIBS_INIT} ${PROTOBUF_LIBRARY})
