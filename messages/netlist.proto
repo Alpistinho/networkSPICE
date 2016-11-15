@@ -11,18 +11,12 @@ enum SimulationType {
 
 }
 
-message ConfigurationLine {
-
-	SimulationType type = 1;
-	double begin = 2;
-	double end = 3;
-	int64 points = 4;
-	
-}
-
 message Netlist {
 
 	repeated Component component = 1;
-	ConfigurationLine config = 2;
+	SimulationType type = 2;
+	double begin = 3;
+	double end = 4;
+	int64 points = 5;
 
 }
