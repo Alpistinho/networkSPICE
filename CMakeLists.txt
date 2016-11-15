@@ -7,7 +7,7 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/messages ${CMAKE_SOURCE_DIR}/build/messages
 #represent the files
 file(GLOB SPICELIB_SOURCES "src/spiceLib/*.cpp")
 
-file(GLOB SIMULATIONNODE_SOURCES "src/simulationNode/*.cpp")
+file(GLOB SIMULATIONNODE_SOURCES "src/simulationNode/src/*.cpp")
 
 SET(CMAKE_CXX_FLAGS "-std=c++11")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib)
@@ -25,6 +25,7 @@ target_include_directories(netSpice PRIVATE include/spiceLib)
 target_include_directories(netSpiceShared PRIVATE include/spiceLib)
 target_include_directories(netSpiceStatic PRIVATE include/spiceLib)
 target_include_directories(simulationNode PRIVATE include/spiceLib)
+target_include_directories(simulationNode PRIVATE src/simulationNode/include)
 target_include_directories(simulationNode PRIVATE build/messages)
 
 
