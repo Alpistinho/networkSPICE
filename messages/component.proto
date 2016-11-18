@@ -24,6 +24,5 @@ message Component {
 	ComponentType componentType = 1;
 	repeated string nodes = 2;
 	repeated float values = 3;
-	repeated float tolerances = 4;
 
 }
