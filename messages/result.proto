@@ -13,7 +13,7 @@ message FrequencyPoint {
 
 message TransientPoint {
 
-	repeated double time = 1;
+	double time = 1;
 	repeated double value = 2;
 	repeated uint32 node = 3;
 
