@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 #name of the project
 project (networkSPICE)
 
+find_package (Threads)
+
 add_subdirectory(${CMAKE_SOURCE_DIR}/messages ${CMAKE_SOURCE_DIR}/build/messages)
 
 #represent the files
@@ -25,6 +27,7 @@ target_include_directories(netSpice PRIVATE include/spiceLib)
 target_include_directories(netSpiceShared PRIVATE include/spiceLib)
 target_include_directories(netSpiceStatic PRIVATE include/spiceLib)
 target_include_directories(simulationNode PRIVATE include/spiceLib)
+target_include_directories(simulationNode PRIVATE include/zmq)
 target_include_directories(simulationNode PRIVATE src/simulationNode/include)
 target_include_directories(simulationNode PRIVATE build/messages)
 
@@ -32,4 +35,4 @@ target_include_directories(simulationNode PRIVATE build/messages)
 
 MESSAGE( STATUS "CMAKE_BINARY_DIR: " ${CMAKE_BINARY_DIR}/build/messages )
 
-Target_Link_Libraries(simulationNode netSpiceStatic messages ${CMAKE_THREAD_LIBS_INIT} ${PROTOBUF_LIBRARY})
+Target_Link_Libraries(simulationNode netSpiceStatic messages ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_SOURCE_DIR}/lib/libzmq-static.a ${PROTOBUF_LIBRARY} ${CMAKE_THREAD_LIBS_INIT})
