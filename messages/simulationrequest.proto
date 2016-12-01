@@ -17,6 +17,14 @@ message Netlist {
 	SimulationType type = 2;
 	double begin = 3;
 	double end = 4;
-	int64 points = 5;
+	uint64 points = 5;
+	double step = 6;
 
+}
+
+message SimulationRequest {
+
+	Netlist netlist = 1;
+	repeated uint32 nodes = 2;
+	
 }
