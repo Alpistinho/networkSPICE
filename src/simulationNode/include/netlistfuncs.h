@@ -3,14 +3,14 @@
 
 #include <complex>
 #include "ComponentStorage.h"
-#include "netlist.pb.h"
+#include "simulationrequest.pb.h"
 #include "results.pb.h"
 
 Spice::ComponentStorage readComponents(networkSpiceMessages::Netlist &);
 
-networkSpiceMessages::Results writeResults(std::map<double,std::vector<std::complex<double>>*> &results, std::vector<unsigned> nodes);
+networkSpiceMessages::Results writeResults(std::map<double,std::vector<std::complex<double>>*> * results, std::vector<unsigned> nodes);
 
-networkSpiceMessages::Results writeResults(std::vector<std::pair<double, std::vector<double>>> &results, std::vector<unsigned> nodes);
+networkSpiceMessages::Results writeResults(std::vector<std::pair<double, std::vector<double>>> results, std::vector<unsigned> nodes);
 
 
 #endif

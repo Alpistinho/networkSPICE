@@ -23,16 +23,16 @@ add_executable(netSpice ${SPICELIB_SOURCES})
 add_executable(simulationNode ${SIMULATIONNODE_SOURCES})
 
 
-target_include_directories(netSpice PRIVATE include/spiceLib)
-target_include_directories(netSpiceShared PRIVATE include/spiceLib)
-target_include_directories(netSpiceStatic PRIVATE include/spiceLib)
-target_include_directories(simulationNode PRIVATE include/spiceLib)
-target_include_directories(simulationNode PRIVATE include/zmq)
-target_include_directories(simulationNode PRIVATE src/simulationNode/include)
-target_include_directories(simulationNode PRIVATE build/messages)
+target_include_directories(netSpice PRIVATE ${CMAKE_SOURCE_DIR}/include/spiceLib)
+target_include_directories(netSpiceShared PRIVATE ${CMAKE_SOURCE_DIR}/include/spiceLib)
+target_include_directories(netSpiceStatic PRIVATE ${CMAKE_SOURCE_DIR}/include/spiceLib)
+target_include_directories(simulationNode PRIVATE ${CMAKE_SOURCE_DIR}/include/spiceLib)
+target_include_directories(simulationNode PRIVATE ${CMAKE_SOURCE_DIR}/include/zmq)
+target_include_directories(simulationNode PRIVATE ${CMAKE_SOURCE_DIR}/src/simulationNode/include)
+target_include_directories(simulationNode PRIVATE ${CMAKE_SOURCE_DIR}/build/messages)
 
 
 
-MESSAGE( STATUS "CMAKE_BINARY_DIR: " ${CMAKE_BINARY_DIR}/build/messages )
+MESSAGE( STATUS "CMAKE_SOURCE_DIR: " ${CMAKE_SOURCE_DIR})
 
 Target_Link_Libraries(simulationNode netSpiceStatic messages ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_SOURCE_DIR}/lib/libzmq-static.a ${PROTOBUF_LIBRARY} ${CMAKE_THREAD_LIBS_INIT})

@@ -10,6 +10,7 @@ namespace Spice {
     }
     
     FrequencySimulation::~FrequencySimulation() {
+        delete results;
     }
     
     std::map<double,std::vector<std::complex<double>>*> * FrequencySimulation::simulateFrequencyResponse(ComponentStorage* componentStorage) {

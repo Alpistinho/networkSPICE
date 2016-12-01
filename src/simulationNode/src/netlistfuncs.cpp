@@ -92,7 +92,35 @@ networkSpiceMessages::Results writeResults(std::map<double,std::vector<std::comp
 
 }
 
-networkSpiceMessages::Results writeResults(std::vector<std::pair<double, std::vector<double>>> &results, std::vector<unsigned> nodes) {
+networkSpiceMessages::Results writeResults(std::map<double,std::vector<std::complex<double>>*> * results, std::vector<unsigned> nodes) {
+
+	networkSpiceMessages::Results resultMessage;
+
+	std::map<double,std::vector<std::complex<double>>*>::const_iterator it;
+
+	for(it = results->begin(); it != results->end(); it++) {
+
+ 		networkSpiceMessages::FrequencyPoint *freqPoint = resultMessage.add_frequencypoint();
+
+		std::vector<unsigned>::const_iterator nodeIt;;
+
+		for (nodeIt = nodes.begin(); nodeIt != nodes.end(); nodeIt++) {
+
+			freqPoint->add_magnitude(std::abs(it->second->at(*nodeIt)));
+			freqPoint->add_phase(std::arg(it->second->at(*nodeIt)));
+			freqPoint->add_node(*nodeIt);
+
+		}
+
+		freqPoint->set_frequency(it->first);
+
+	}
+
+	return resultMessage;
+
+}
+
+networkSpiceMessages::Results writeResults(std::vector<std::pair<double, std::vector<double>>> results, std::vector<unsigned> nodes) {
 
 	networkSpiceMessages::Results resultMessage;
 
