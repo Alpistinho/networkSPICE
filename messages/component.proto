@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package networkSpiceMessages;
 
-enum ComponentType {
+enum ComponentType { // Kinds of components
 
 	Resistor = 0;
 	Capacitor = 1;
@@ -19,10 +19,10 @@ enum ComponentType {
 
 }
 
-message Component {
+message Component { // Represents a component in the circuit
 
-	ComponentType componentType = 1;
-	repeated string nodes = 2;
-	repeated float values = 3;
+	ComponentType componentType = 1; // Which kind of component this is
+	repeated string nodes = 2; // To which nodes this component is linked To
+	repeated float values = 3; // The values that this component have
 
 }

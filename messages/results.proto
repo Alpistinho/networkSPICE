@@ -2,24 +2,28 @@ syntax = "proto3";
 
 package networkSpiceMessages;
 
-message FrequencyPoint {
+message FrequencyPoint { // Holds the results of a single frequency point
 
-	double frequency = 1;
-	repeated double magnitude = 2;
-	repeated double phase = 3;
-	repeated uint32 node = 4;
-
-}
-
-message TransientPoint {
-
-	double time = 1;
-	repeated double magnitude = 2;
-	repeated uint32 node = 3;
+	double frequency = 1; // Frequency to which the point refers to
+	repeated double magnitude = 2; // Array holding the magnitude of each node requested
+	repeated double phase = 3; // Array holding the phase of each node requested in radians
+	repeated uint32 node = 4; // Array holding the numbers of all nodes requested
+	// Obs: The node numbers aren't the ones in the netlist, but follow a crescent order starting from the first node that appears in the netlist.
+	// If the nodes appear as banana, apple and pine, its node numbers are 1, 2 and 3, respectively
+	// If they appear as 8 6 9, its node numbers are 1, 2 and 3, again
+	// The node 0 is reserved to the ground
 
 }
 
-message Results {
+message TransientPoint { // Holds the results of a single point in time
+
+	double time = 1; // Time instant to which the point refers to
+	repeated double magnitude = 2; // Array holding the magnitude of each node requested
+	repeated uint32 node = 3; // Array holding the numbers of all nodes requested
+
+}
+
+message Results { // Holds arrays of frequency and transient points
 
 	repeated TransientPoint transientPoint = 1;
 	repeated FrequencyPoint frequencyPoint = 2;

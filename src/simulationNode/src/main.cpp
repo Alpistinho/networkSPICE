@@ -56,23 +56,23 @@ int main(int argc, char *argv[]) {
 
 		componentStorage = readComponents(netlist);
 		
-		if (netlist.type() == networkSpiceMessages::SimulationType::Frequency) {
+		if (simReq.type() == networkSpiceMessages::SimulationType::Frequency) {
 
 			std::cout << "Simulating..." << std::endl;
 
-			freqSim.setInitFreq(netlist.begin());
-			freqSim.setEndFreq(netlist.end());
-			freqSim.setPoints(netlist.points());
+			freqSim.setInitFreq(simReq.begin());
+			freqSim.setEndFreq(simReq.end());
+			freqSim.setPoints(simReq.points());
 
 			std::map<double,std::vector<std::complex<double>>*> *results = freqSim.simulateFrequencyResponse(&componentStorage);
 			writeResults(results, requestedNodes);
 
 		} else { 
 
-			if (netlist.type() == networkSpiceMessages::SimulationType::Transient) {
+			if (simReq.type() == networkSpiceMessages::SimulationType::Transient) {
 
-				timeSim.setEndTime(netlist.end());
-				timeSim.setStep(netlist.step());
+				timeSim.setEndTime(simReq.end());
+				timeSim.setStep(simReq.step());
 
 				std::vector<std::pair<double, std::vector<double>>> *results = timeSim.simulateTransientResponse(&componentStorage, initialConditions);
 				writeResults(*results, requestedNodes);
