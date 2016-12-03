@@ -33,10 +33,9 @@ int main(int argc, char *argv[]) {
 
 	std::vector<double> initialConditions(componentStorage.getSystemSize(), 0);
 
-	std::cout << "Waiting for jobs" << std::endl;
-
 	while (1) {
 
+		std::cout << "Waiting for jobs" << std::endl;
 
 		zmq::message_t receivedMessage;
 		receiver.recv(&receivedMessage);
