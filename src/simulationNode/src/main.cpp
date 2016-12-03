@@ -1,4 +1,5 @@
 #include <iostream> 
+#include <string>
 
 #include "ComponentStorage.h"
 #include "FrequencySimulation.h"
@@ -12,8 +13,56 @@
 #include "netlistfuncs.h"
 
 int main(int argc, char *argv[]) {
+
+
+	if (argc == 1) {
+
+		std::cout << std::endl << "Using localhost as address" << std::endl << std::endl;
+		std::cout << "For different usage see:" << std::endl << std::endl;
+		std::cout << "Usage: simulationNode <server address>. e.g. simulationNode 192.168.1.10" << std::endl;
+		std::cout << "Usage: simulationNode <server address> <ventilator port> <sink port>. e.g. simulationNode 192.168.1.10 5558 5557" << std::endl << std::endl;
+
+	}
+
+	if (argc == 3) {
+
+		std::cout << "Usage: simulationNode <server address>. e.g. simulationNode 192.168.1.10" << std::endl;
+		std::cout << "Usage: simulationNode <server address> <ventilator port> <sink port>. e.g. simulationNode 192.168.1.10 5558 5557" << std::endl;
+		
+		return 1;
+	}
+
+	if (argc == 2) {
+
+		std::string ventilatorAddress("tcp://");
+		ventilatorAddress.append(argv[1]);
+		ventilatorAddress.append(":5557");
+
+		std::string sinkAddress("tcp://");
+		sinkAddress.append(argv[1]);
+		sinkAddress.append(":5558");
+
+
+	}
+
+	if (argc == 4) {
+
+		std::string ventilatorAddress("tcp://");
+		ventilatorAddress.append(argv[1]);
+		ventilatorAddress.append(":");
+		ventilatorAddress.append(argv[2]);
+
+		std::string sinkAddress("tcp://");
+		sinkAddress.append(argv[1]);
+		sinkAddress.append(":");
+		sinkAddress.append(argv[3]);
+
+	}
+
+
+
 	
-	Spice::ComponentStorage componentStorage;
+	Spice::ComponentStorage componentStorage; 
 	Spice::FrequencySimulation freqSim;
 	Spice::TransientSimulation timeSim;
 	
@@ -25,11 +74,11 @@ int main(int argc, char *argv[]) {
 
 	//  Socket to receive messages on
 	zmq::socket_t receiver(context, ZMQ_PULL);
-	receiver.connect("tcp://localhost:5557");
+	receiver.connect(ventilatorAddress);
 
 	//  Socket to send messages to
 	zmq::socket_t sender(context, ZMQ_PUSH);
-	sender.connect("tcp://localhost:5558");
+	sender.connect(sinkAddress);
 
 	std::vector<double> initialConditions(componentStorage.getSystemSize(), 0);
 
