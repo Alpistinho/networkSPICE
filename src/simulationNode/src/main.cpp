@@ -65,6 +65,8 @@ int main(int argc, char *argv[]) {
 	}
 
 
+	std::cout << "Ventilator address: " << ventilatorAddress << std::endl;
+	std::cout << "Sink address: " << sinkAddress << std::endl;
 
 	
 	Spice::ComponentStorage componentStorage; 
@@ -76,9 +78,6 @@ int main(int argc, char *argv[]) {
 	networkSpiceMessages::Results results;
 
 	zmq::context_t context(1);
-
-	std::cout << ventilatorAddress << std::endl;
-	std::cout << sinkAddress << std::endl;
 
 	//  Socket to receive messages on
 	zmq::socket_t receiver(context, ZMQ_PULL);
