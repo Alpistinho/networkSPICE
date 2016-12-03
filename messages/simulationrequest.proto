@@ -4,13 +4,6 @@ package networkSpiceMessages;
 
 import "component.proto";
 
-enum SimulationType { // Defines which kind of simulation should be done
-
-	Frequency = 0;
-	Transient = 1;
-
-}
-
 message Netlist { // Defines the circuit to be simulated
 
 	repeated Component component = 1; // Array holding the circuit components
@@ -18,7 +11,14 @@ message Netlist { // Defines the circuit to be simulated
 }
 
 message SimulationRequest { // Defines a request for simulation
+	
+	enum SimulationType { // Defines which kind of simulation should be done
 
+		Frequency = 0;
+		Transient = 1;
+
+	}
+	
 	Netlist netlist = 1; // Defines circuit
 	repeated uint32 nodes = 2; // Nodes whose results should be reported back by the simulationNode
 	SimulationType type = 3; 

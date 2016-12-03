@@ -55,47 +55,47 @@ Spice::ComponentStorage readComponents(networkSpiceMessages::Netlist &netlist) {
 		const networkSpiceMessages::Component& component = netlist.component(i);
 		
 		switch (component.componenttype()) { 
-        	case networkSpiceMessages::ComponentType::Resistor:
+        	case networkSpiceMessages::Component::Resistor:
         		componentStorage.addResistor(component.nodes(0), component.nodes(1), component.values(0));
 			break;
         
-        	case networkSpiceMessages::ComponentType::Capacitor:
+        	case networkSpiceMessages::Component::Capacitor:
         		componentStorage.addCapacitor(component.nodes(0), component.nodes(1), component.values(0));
 			break;
         
-        	case networkSpiceMessages::ComponentType::Inductor:
+        	case networkSpiceMessages::Component::Inductor:
         		componentStorage.addInductor(component.nodes(0), component.nodes(1), component.values(0));
 			break;
         
-        	case networkSpiceMessages::ComponentType::VoltageSource:
+        	case networkSpiceMessages::Component::VoltageSource:
         		componentStorage.addVoltageSource(component.nodes(0), component.nodes(1), component.values(0), component.values(1));
 			break;
         
-        	case networkSpiceMessages::ComponentType::CurrentSource:
+        	case networkSpiceMessages::Component::CurrentSource:
         		componentStorage.addCurrentSource(component.nodes(0), component.nodes(1), component.values(0), component.values(1));
 			break;
         
-        	case networkSpiceMessages::ComponentType::VoltageControlledVoltageSource:
+        	case networkSpiceMessages::Component::VoltageControlledVoltageSource:
         		componentStorage.addVoltageControlledVoltageSource(component.nodes(0), component.nodes(1),component.nodes(2), component.nodes(3), component.values(0));
 			break;
         
-        	case networkSpiceMessages::ComponentType::CurrentControlledCurrentSource:
+        	case networkSpiceMessages::Component::CurrentControlledCurrentSource:
         		componentStorage.addCurrentControlledCurrentSource(component.nodes(0), component.nodes(1),component.nodes(2), component.nodes(3), component.values(0));
 			break;
         
-        	case networkSpiceMessages::ComponentType::VoltageControlledCurrentSource:
+        	case networkSpiceMessages::Component::VoltageControlledCurrentSource:
         		componentStorage.addVoltageControlledCurrentSource(component.nodes(0), component.nodes(1),component.nodes(2), component.nodes(3), component.values(0));
         	break;
         
-        	case networkSpiceMessages::ComponentType::CurrentControlledVoltageSource:
+        	case networkSpiceMessages::Component::CurrentControlledVoltageSource:
         		componentStorage.addCurrentControlledVoltageSource(component.nodes(0), component.nodes(1),component.nodes(2), component.nodes(3), component.values(0));
 			break;
         
-        	case networkSpiceMessages::ComponentType::OpAmp:
+        	case networkSpiceMessages::Component::OpAmp:
         		componentStorage.addOpAmp(component.nodes(0), component.nodes(1),component.nodes(2), component.nodes(3));
 			break;
         	
-			case networkSpiceMessages::ComponentType::BJT:
+			case networkSpiceMessages::Component::BJT:
         		componentStorage.addBJT(component.nodes(0), component.nodes(1),component.nodes(2), component.values(0), component.values(1), component.values(2), component.values(3), component.values(4), component.values(5));
 			break;
 		}

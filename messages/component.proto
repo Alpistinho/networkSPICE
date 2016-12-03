@@ -2,23 +2,23 @@ syntax = "proto3";
 
 package networkSpiceMessages;
 
-enum ComponentType { // Kinds of components
-
-	Resistor = 0;
-	Capacitor = 1;
-	Inductor = 2;
-	VoltageSource = 3;
-	CurrentSource = 4;
-	VoltageControlledVoltageSource = 5;
-	CurrentControlledCurrentSource = 6;
-	VoltageControlledCurrentSource = 7;
-	CurrentControlledVoltageSource = 8;
-	OpAmp = 9;
-	BJT = 10;
-
-}
-
 message Component { // Represents a component in the circuit
+
+	enum ComponentType { // Kinds of components
+
+		Resistor = 0;
+		Capacitor = 1;
+		Inductor = 2;
+		VoltageSource = 3;
+		CurrentSource = 4;
+		VoltageControlledVoltageSource = 5;
+		CurrentControlledCurrentSource = 6;
+		VoltageControlledCurrentSource = 7;
+		CurrentControlledVoltageSource = 8;
+		OpAmp = 9;
+		BJT = 10;
+
+	}
 
 	ComponentType componentType = 1; // Which kind of component this is
 	repeated string nodes = 2; // To which nodes this component is linked To

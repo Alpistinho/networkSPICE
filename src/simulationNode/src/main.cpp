@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
 
 		componentStorage = readComponents(netlist);
 		
-		if (simReq.type() == networkSpiceMessages::SimulationType::Frequency) {
+		if (simReq.type() == networkSpiceMessages::SimulationRequest::Frequency) {
 
 			std::cout << "Simulating..." << std::endl;
 
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
 
 		} else { 
 
-			if (simReq.type() == networkSpiceMessages::SimulationType::Transient) {
+			if (simReq.type() == networkSpiceMessages::SimulationRequest::Transient) {
 
 				timeSim.setEndTime(simReq.end());
 				timeSim.setStep(simReq.step());
