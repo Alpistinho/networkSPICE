@@ -1,8 +1,3 @@
-#
-#   Hello World server in Python
-#   Binds REP socket to tcp://*:5555
-#   Expects b"Hello" from client, replies with b"World"
-#
 import zmq
 import component_pb2
 import simulationrequest_pb2
@@ -18,12 +13,10 @@ simReq.type = simulationrequest_pb2.Frequency
 
 component = component_pb2.Component()
 component.componentType = component_pb2.Resistor
-node = component.nodes.add()
-node = 2
-node = component.nodes.add()
-node = 3
-value = component.values.add()
-value = 1000
+node = component.nodes.append('2')
+node = component.nodes.append('3')
+
+value = component.values.append(1000)
 
 
 # context = zmq.Context()
