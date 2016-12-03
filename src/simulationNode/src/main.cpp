@@ -14,6 +14,8 @@
 
 int main(int argc, char *argv[]) {
 
+	std::string ventilatorAddress("tcp://");
+	std::string sinkAddress("tcp://");
 
 	if (argc == 1) {
 
@@ -21,6 +23,9 @@ int main(int argc, char *argv[]) {
 		std::cout << "For different usage see:" << std::endl << std::endl;
 		std::cout << "Usage: simulationNode <server address>. e.g. simulationNode 192.168.1.10" << std::endl;
 		std::cout << "Usage: simulationNode <server address> <ventilator port> <sink port>. e.g. simulationNode 192.168.1.10 5558 5557" << std::endl << std::endl;
+
+		ventilatorAddress = "tcp://localhost:5557";
+		sinkAddress = "tcp://localhost:5558";
 
 	}
 
@@ -32,13 +37,14 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
+
+
 	if (argc == 2) {
 
-		std::string ventilatorAddress("tcp://");
+		
 		ventilatorAddress.append(argv[1]);
 		ventilatorAddress.append(":5557");
 
-		std::string sinkAddress("tcp://");
 		sinkAddress.append(argv[1]);
 		sinkAddress.append(":5558");
 
@@ -47,12 +53,11 @@ int main(int argc, char *argv[]) {
 
 	if (argc == 4) {
 
-		std::string ventilatorAddress("tcp://");
 		ventilatorAddress.append(argv[1]);
 		ventilatorAddress.append(":");
 		ventilatorAddress.append(argv[2]);
 
-		std::string sinkAddress("tcp://");
+		
 		sinkAddress.append(argv[1]);
 		sinkAddress.append(":");
 		sinkAddress.append(argv[3]);
@@ -71,6 +76,9 @@ int main(int argc, char *argv[]) {
 	networkSpiceMessages::Results results;
 
 	zmq::context_t context(1);
+
+	std::cout << ventilatorAddress << std::endl;
+	std::cout << sinkAddress << std::endl;
 
 	//  Socket to receive messages on
 	zmq::socket_t receiver(context, ZMQ_PULL);
