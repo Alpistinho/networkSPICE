@@ -16,7 +16,6 @@ enum ComponentType { // Kinds of components
 	OpAmp = 9;
 	BJT = 10;
 
-
 }
 
 message Component { // Represents a component in the circuit

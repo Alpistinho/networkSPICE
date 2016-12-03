@@ -37,17 +37,13 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
-
-
 	if (argc == 2) {
-
 		
 		ventilatorAddress.append(argv[1]);
 		ventilatorAddress.append(":5557");
 
 		sinkAddress.append(argv[1]);
 		sinkAddress.append(":5558");
-
 
 	}
 
@@ -68,15 +64,6 @@ int main(int argc, char *argv[]) {
 	std::cout << "Ventilator address: " << ventilatorAddress << std::endl;
 	std::cout << "Sink address: " << sinkAddress << std::endl;
 
-	
-	Spice::ComponentStorage componentStorage; 
-	Spice::FrequencySimulation freqSim;
-	Spice::TransientSimulation timeSim;
-	
-	networkSpiceMessages::SimulationRequest simReq;
-	networkSpiceMessages::Netlist netlist;
-	networkSpiceMessages::Results results;
-
 	zmq::context_t context(1);
 
 	//  Socket to receive messages on
@@ -86,6 +73,15 @@ int main(int argc, char *argv[]) {
 	//  Socket to send messages to
 	zmq::socket_t sender(context, ZMQ_PUSH);
 	sender.connect(sinkAddress);
+
+	
+	Spice::ComponentStorage componentStorage; 
+	Spice::FrequencySimulation freqSim;
+	Spice::TransientSimulation timeSim;
+	
+	networkSpiceMessages::SimulationRequest simReq;
+	networkSpiceMessages::Netlist netlist;
+	networkSpiceMessages::Results results;
 
 	std::vector<double> initialConditions(componentStorage.getSystemSize(), 0);
 
@@ -99,6 +95,8 @@ int main(int argc, char *argv[]) {
 		std::cout << "Parsing..." << std::endl;
 
 		simReq.ParseFromArray(receivedMessage.data(), receivedMessage.size());
+
+		printSimulationRequest(simReq);
 
 		netlist = simReq.netlist();
 
@@ -134,11 +132,6 @@ int main(int argc, char *argv[]) {
 
 			}
 		}
-		/*
-		READ NETLIST
-		SIMULATE
-		WRITE RESULTS
-		*/
 		
 		std::string serializedResults;
 		results.SerializeToString(&serializedResults); 

@@ -15,7 +15,6 @@ message Netlist { // Defines the circuit to be simulated
 
 	repeated Component component = 1; // Array holding the circuit components
 
-
 }
 
 message SimulationRequest { // Defines a request for simulation
