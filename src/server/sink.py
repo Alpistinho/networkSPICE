@@ -22,7 +22,7 @@ simReturn=results_pb2.Results()
 
 # Wait for start of batch
 s = receiver.recv()
-
+print("olar")
 
 # Start our clock now
 tstart = time.time()
