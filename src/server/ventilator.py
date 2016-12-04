@@ -1,7 +1,7 @@
 import sys
 import math
-
 import zmq
+import time 
 
 import simulationrequest_pb2
 import component_pb2
