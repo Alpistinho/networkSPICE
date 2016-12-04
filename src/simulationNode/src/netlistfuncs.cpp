@@ -46,16 +46,19 @@ void printSimulationRequest(networkSpiceMessages::SimulationRequest simReq) {
 
 }
 
-Spice::ComponentStorage readComponents(networkSpiceMessages::Netlist &netlist) {
+Spice::ComponentStorage readComponents(networkSpiceMessages::SimulationRequest &simReq) {
 
 	Spice::ComponentStorage componentStorage;
+
+	networkSpiceMessages::Netlist netlist = simReq.netlist();
 
 	for (unsigned i = 0; i < netlist.component_size(); i++) {
 
 		const networkSpiceMessages::Component& component = netlist.component(i);
 		
 		switch (component.componenttype()) { 
-        	case networkSpiceMessages::Component::Resistor:
+        
+			case networkSpiceMessages::Component::Resistor:
         		componentStorage.addResistor(component.nodes(0), component.nodes(1), component.values(0));
 			break;
         
@@ -68,7 +71,37 @@ Spice::ComponentStorage readComponents(networkSpiceMessages::Netlist &netlist) {
 			break;
         
         	case networkSpiceMessages::Component::VoltageSource:
-        		componentStorage.addVoltageSource(component.nodes(0), component.nodes(1), component.values(0), component.values(1));
+				if (simReq.type() == networkSpiceMessages::SimulationRequest::Frequency) {
+
+					componentStorage.addVoltageSource(component.nodes(0), component.nodes(1), component.values(0), component.values(1));
+
+				} else { // Transient
+
+                    unsigned long componentIdentifier;
+                    componentIdentifier = componentStorage.addVoltageSource(component.nodes(0), component.nodes(1), component.values(0), component.values(1));
+
+                    Spice::VoltageSource* dummyComponent = static_cast<Spice::VoltageSource*>(componentStorage.getComponentByIdentifier(componentIdentifier));
+
+                    if(component.sourcetype() == networkSpiceMessages::Component::Sine) {
+
+                        dummyComponent->setMode(Spice::Sinusoidal, component.values(0), 2*M_PI*component.values(1), component.values(2));
+
+                    } else {
+                        if (component.sourcetype() == networkSpiceMessages::Component::Square) {
+                            dummyComponent->setMode(Spice::Square, component.values(0), 2*M_PI*component.values(1), component.values(2), component.values(3));
+                        } else{
+                            if(component.sourcetype() == networkSpiceMessages::Component::Step) {
+                                dummyComponent->setMode(Spice::Step, component.values(0), component.values(1));
+                            } else {
+                                if(component.sourcetype() == networkSpiceMessages::Component::DC) {
+                                    dummyComponent->setMode(Spice::DC, component.values(0));
+                                }
+                              }
+                          }
+                    }
+
+				}
+        		
 			break;
         
         	case networkSpiceMessages::Component::CurrentSource:

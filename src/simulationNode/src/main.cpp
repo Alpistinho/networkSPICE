@@ -107,7 +107,7 @@ int main(int argc, char *argv[]) {
 		}
 		
 
-		componentStorage = readComponents(netlist);
+		componentStorage = readComponents(simReq);
 		
 		if (simReq.type() == networkSpiceMessages::SimulationRequest::Frequency) {
 
