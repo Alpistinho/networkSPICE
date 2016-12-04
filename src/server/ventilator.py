@@ -19,10 +19,9 @@ except NameError:
 
 
 # function to create random values for components for monte carlo simulation
-def randomValue(componentValue,tolerance)
-	return (np.normal(componentValue,tolerance,1))
-
-
+def randomValue(componentValue,tolerance):
+	print("OLAR")
+	return float(np.normal(componentValue,tolerance,1))
 
 
 #function to create netlist
@@ -48,11 +47,13 @@ def openNetlist(fileName):
 def parseComponentLine(line,simReq):
 
 	component = simReq.components.add()
+
 	if line[0] == 'R':
 
 		component.componentType = component.Resistor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
+		line[3]=randomValue(float(line[3]),float(line[4]))
 		component.values.append(float(line[3]))
 
 	
@@ -60,7 +61,8 @@ def parseComponentLine(line,simReq):
 		component.componentType = component.Capacitor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
-		component.values.append(float(line[3]))
+		value=randomValue(float(line[3]),float(line[4]))		
+		component.values.append(float(value))
 
 		
 
@@ -68,6 +70,7 @@ def parseComponentLine(line,simReq):
 		component.componentType = component.Inductor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
+		line[3]=randomValue(float(line[3]),float(line[4]))				
 		component.values.append(float(line[3]))
 
 		
@@ -79,6 +82,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])
+		line[5]=randomValue(float(line[5]),float(line[6]))		
 		component.values.append(float(line[5]))
 
 		
@@ -90,6 +94,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])
+		line[5]=randomValue(float(line[5]),float(line[6]))				
 		component.values.append(float(line[5]))
 
 		
@@ -101,6 +106,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])
+		line[5]=randomValue(float(line[5]),float(line[6]))				
 		component.values.append(float(line[5]))
 
 		
@@ -112,6 +118,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])
+		line[5]=randomValue(float(line[5]),float(line[6]))				
 		component.values.append(float(line[5]))
 
 		
@@ -169,6 +176,7 @@ def parseConfigurationLine(line, simReq):
 		simReq.type = simReq.Transient
 		simReq.end = float(line[1])
 		simReq.step = float(line[2])
+		
 
 		return simReq
 
@@ -202,8 +210,7 @@ def parseConfigurationLine(line, simReq):
 	
 	if line[0].upper() == '.PRINT':
 
-		for node in line[1:]:
-			simReq.nodes.append(int(node))
+		simReq.nodes.append(int(line[1]))
 
 		return simReq
 
@@ -231,13 +238,14 @@ print("Sending tasks to workers...")
 
 
 # The first message is "0" and signals start of batch
-sink.send(b'0')
+sink.send(simProtocol.nodes[0])
 
 
 
 # sendMessage(simProtocol)
 print(simProtocol.__str__())
-sender.send(simProtocol.SerializeToString())
+for index in range(sys.argv[1]):
+	sender.send(simProtocol.SerializeToString())
 
 # Give 0MQ time to deliver
 time.sleep(1)
