@@ -6,7 +6,7 @@ message Component { // Represents a component in the circuit
 
 	enum ComponentType { // Kinds of components
 
-		Resistor = 0;
+		coco = 0;
 		Capacitor = 1;
 		Inductor = 2;
 		VoltageSource = 3;
@@ -17,6 +17,7 @@ message Component { // Represents a component in the circuit
 		CurrentControlledVoltageSource = 8;
 		OpAmp = 9;
 		BJT = 10;
+		Resistor = 11;
 
 	}
 
