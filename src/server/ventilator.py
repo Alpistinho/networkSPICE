@@ -2,6 +2,7 @@
 
 import sys
 import math
+import numpy as np
 
 import zmq
 import time 
@@ -16,6 +17,14 @@ except NameError:
     # Python 3
     raw_input = input
 
+
+# function to create random values for components for monte carlo simulation
+def randomValue(componentValue,tolerance)
+	return (np.normal(componentValue,tolerance,1))
+
+
+
+
 #function to create netlist
 def openNetlist(fileName):
 
@@ -26,12 +35,9 @@ def openNetlist(fileName):
 			
 			line = line.split(' ')
 
-
-
 			if (line[0][0] == '.'):
 				simReq = parseConfigurationLine(line, simReq)
 			else:
-				print("olar")
 				parseComponentLine(line,simReq)
 
 		fileNetlist.close()
@@ -142,7 +148,6 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
 		component.values.append(float(line[4]))
-
 		
 
 	if line[0] == 'I':
@@ -152,7 +157,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
 		component.values.append(float(line[4]))
-
+		
 	return simReq
 
 		
@@ -227,6 +232,9 @@ print("Sending tasks to workers...")
 
 # The first message is "0" and signals start of batch
 sink.send(b'0')
+
+
+
 # sendMessage(simProtocol)
 print(simProtocol.__str__())
 sender.send(simProtocol.SerializeToString())

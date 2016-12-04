@@ -27,7 +27,7 @@ s = receiver.recv()
 # Start our clock now
 tstart = time.time()
 
-simReturn.ParseFromString= receiver.recv()
+simReturn.ParseFromString(receiver.recv())
 print(simReturn.__str__())
 
 print("Total elapsed time: %d msec" % ((tend-tstart)*1000))
