@@ -5,6 +5,8 @@
 #include "FrequencySimulation.h"
 #include "TransientSimulation.h"
 
+#include <google/protobuf/text_format.h>
+
 #include "zmq.hpp"
 
 #include "simulationrequest.pb.h"
@@ -91,18 +93,24 @@ int main(int argc, char *argv[]) {
 		zmq::message_t receivedMessage;
 		receiver.recv(&receivedMessage);
 
-		std::cout << "Parsing..." << std::endl;
+		std::string msg_str(static_cast<char*>(receivedMessage.data()), receivedMessage.size());
 
-		simReq.ParseFromArray(receivedMessage.data(), receivedMessage.size());
+		bool success = simReq.ParseFromString(msg_str);
 
-		printSimulationRequest(simReq);
+        // std::string text_str;
+        // google::protobuf::TextFormat::PrintToString(simReq, &text_str);
+        // std::cout << text_str << std::endl;
+
+		// printSimulationRequest(simReq);
 
 		std::vector<unsigned> requestedNodes;
 
-		for (unsigned i = 0; i < simReq.nodes_size(); i++) {
-			requestedNodes.push_back(simReq.nodes(i));
+		for (int i = 0; i < simReq.nodes_size(); i++) {
+			
+			const unsigned &node = simReq.nodes(i);
+			requestedNodes.push_back(node);
+
 		}
-		
 
 		componentStorage = readComponents(simReq);
 		
@@ -114,8 +122,8 @@ int main(int argc, char *argv[]) {
 			freqSim.setEndFreq(simReq.end());
 			freqSim.setPoints(simReq.points());
 
-			std::map<double,std::vector<std::complex<double>>*> *results = freqSim.simulateFrequencyResponse(&componentStorage);
-			writeResults(results, requestedNodes);
+			std::map<double,std::vector<std::complex<double>>*> *freqResults = freqSim.simulateFrequencyResponse(&componentStorage);
+			results = writeResults(freqResults, requestedNodes);
 
 		} else { 
 
@@ -124,21 +132,26 @@ int main(int argc, char *argv[]) {
 				timeSim.setEndTime(simReq.end());
 				timeSim.setStep(simReq.step());
 
-				std::vector<std::pair<double, std::vector<double>>> *results = timeSim.simulateTransientResponse(&componentStorage, initialConditions);
-				writeResults(*results, requestedNodes);
+				std::vector<std::pair<double, std::vector<double>>> *tranResults = timeSim.simulateTransientResponse(&componentStorage, initialConditions);
+				results = writeResults(*tranResults, requestedNodes);
 
 			}
 		}
 		
 		std::string serializedResults;
 		results.SerializeToString(&serializedResults); 
-		
-		zmq::message_t sentMessage;
 
-		memcpy(sentMessage.data(), serializedResults.data(), serializedResults.size());
+		// std::string text_str;
+		// google::protobuf::TextFormat::PrintToString(results, &text_str);
+        // std::cout << text_str << std::endl;
+		
+		zmq::message_t sentMessage(serializedResults.size());
 
 		std::cout << "Simulation Complete. Sending results..." << std::endl;
-		
+		// std::cout << "Byte size: " << serializedResults.size() << std::endl;
+
+		memcpy ((void *) sentMessage.data (), serializedResults.c_str(), serializedResults.size());;
+
 		sender.send(sentMessage);
 		
 		

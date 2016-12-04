@@ -18,17 +18,19 @@ receiver = context.socket(zmq.PULL)
 receiver.bind("tcp://*:5558")
 
 # array of frequency and transient points
-simReturn=results_pb2.Results()
+simReturn = results_pb2.Results()
 
 # Wait for start of batch
 s = receiver.recv()
+print("Signal from ventilator: " + str(s))
 
 
 # Start our clock now
 tstart = time.time()
 
-simReturn.ParseFromString= receiver.recv()
-print(simReturn.__str__())
 
-print("Total elapsed time: %d msec" % ((tend-tstart)*1000))
+s = receiver.recv()
+simReturn.ParseFromString(s)
+
 tend = time.time()
+print("Total elapsed time: %d msec" % ((tend-tstart)*1000))
