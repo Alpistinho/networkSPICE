@@ -2,7 +2,7 @@
 
 void printSimulationRequest(networkSpiceMessages::SimulationRequest simReq) {
 
-	std::cout << "SimlationRequest Message: " << std::endl << std::endl;
+	std::cout << "SimulationRequest Message: " << std::endl << std::endl;
 
 	std::cout << "Begin: " << simReq.begin() << std::endl;
 	std::cout << "End: " << simReq.end() << std::endl;
