@@ -1,11 +1,12 @@
+#!/usr/bin/python3
+
 import sys
 import math
 import zmq
 import time 
 
-import simulationrequest_pb2
 import component_pb2
-
+import simulationrequest_pb2
 
 
 try:
@@ -15,35 +16,30 @@ except NameError:
     raw_input = input
 
 #function to create netlist
-#def createNetlist ()
-
-#function to open a netlist and return a array with the values and fields-TO DO-
 def openNetlist(fileName):
 
 	simReq = simulationrequest_pb2.SimulationRequest()
-	
-	for line in fileNetlist:
+	with open(fileName,'r') as fileNetlist:
+
+		for line in fileNetlist:
+			
+			line = line.split(' ')
+
+			if (line[0][0] == '.'):
+				simReq = parseLine(line, simReq)
+			else:
+				print("olar")
+				component = component_pb2.Component()
+				component = parseLine(line)
 		
-		line = line.split(' ')
+		fileNetlist.close()
+	return simReq
 
-		if (line[0][0] == '.'):
-			simReq = parseLine(line, simReq)
-		else:
-			component = parseLine(line)
-
-
-
-    return switcher.get(argument, "nothing")
-	# with open(fileName,'r') as fileNetlist:
-	# 	line = fileNetlist.readline()
-		
-	fileNetlist.close()
-	return component
-
+#function to parse and fill the fields of protobuf 
 def parseLine(line, simReq = None):
 
 	if line[0] == 'R':
-		component = component_pb2.Component()
+		
 		component.componentType = component_pb2.Resistor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
@@ -189,25 +185,6 @@ def parseLine(line, simReq = None):
 		simReq.end = end
 
 		return simReq
-		
-
-
-
-#function to fill the fields of protobuf 
-def fillProtobuf(simReq):
-	
-	simReq.begin = 10
-	simReq.end = 20
-	simReq.points = 30
-	simReq.step = 0.01
-	simReq.type = simulationrequest_pb2.Frequency
-	simReq.points = 0
-	component = component_pb2.Component()
-	component.componentType = component_pb2.Resistor
-	component.nodes.append('2')
-	node = component.nodes.append('3')
-
-	value = component.values.append(1000.0)
 
 #function to send the message using Py0MQ
 def sendMessage(simReq):
@@ -225,13 +202,7 @@ sink = context.socket(zmq.PUSH)
 sink.connect("tcp://localhost:5558")
 
 
-
-
-print('component: {}'  .format(openNetlist('netlist.txt')))
-
-fillProtobuf(simReq)
-
-
+simProtocol=openNetlist('netlist.txt')
 
 print("Press Enter when the workers are ready: ")
 _ = raw_input()
@@ -241,7 +212,7 @@ print("Sending tasks to workers...")
 # The first message is "0" and signals start of batch
 sink.send(b'0')
 
-sendMessage(simReq)
+sendMessage(simProtocol)
 
 # Give 0MQ time to deliver
 time.sleep(1)
