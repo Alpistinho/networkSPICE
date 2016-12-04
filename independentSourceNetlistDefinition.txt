@@ -1,0 +1,4 @@
+V no1 no2 sine amplitude freq phase
+V no1 no2 square amplitude freq highTime lowTime offTime
+V no1 no2 DC modulus
+V no1 no2 step modulus delay
