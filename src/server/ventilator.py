@@ -39,8 +39,9 @@ def openNetlist(fileName):
 def parseLine(line, simReq = None):
 
 	if line[0] == 'R':
-		
-		component.componentType = component_pb2.Resistor
+
+		component = component_pb2.Component()
+		component.componentType = component.Resistor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
@@ -49,7 +50,7 @@ def parseLine(line, simReq = None):
 
 	if line[0] == 'C':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.Capacitor
+		component.componentType = component.Capacitor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
@@ -58,7 +59,7 @@ def parseLine(line, simReq = None):
 
 	if line[0] == 'L':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.Inductor
+		component.componentType = component.Inductor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
@@ -67,7 +68,7 @@ def parseLine(line, simReq = None):
 
 	if line[0] == 'E':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.VoltageControlledVoltageSource
+		component.componentType = component.VoltageControlledVoltageSource
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
@@ -78,7 +79,7 @@ def parseLine(line, simReq = None):
 
 	if line[0] == 'F':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.CurrentControlledCurrentSource
+		component.componentType = component.CurrentControlledCurrentSource
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
@@ -89,7 +90,7 @@ def parseLine(line, simReq = None):
 		
 	if line[0] == 'G':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.VoltageControlledCurrentSource
+		component.componentType = component.VoltageControlledCurrentSource
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
@@ -100,7 +101,7 @@ def parseLine(line, simReq = None):
 
 	if line[0] == 'H':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.CurrentControlledVoltageSource
+		component.componentType = component.CurrentControlledVoltageSource
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
@@ -111,7 +112,7 @@ def parseLine(line, simReq = None):
 
 	if line[0] == 'O':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.OpAmp
+		component.componentType = component.OpAmp
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
@@ -121,7 +122,7 @@ def parseLine(line, simReq = None):
 
 	if line[0] == 'Q':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.BJT
+		component.componentType = component.BJT
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
@@ -136,7 +137,7 @@ def parseLine(line, simReq = None):
 
 	if line[0] == 'V':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.VoltageSource
+		component.componentType = component.VoltageSource
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
@@ -145,7 +146,7 @@ def parseLine(line, simReq = None):
 
 	if line[0] == 'I':
 		component = component_pb2.Component()
-		component.componentType = component_pb2.CurrentSource
+		component.componentType = component.CurrentSource
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
@@ -154,7 +155,7 @@ def parseLine(line, simReq = None):
 
 	if line[0].ascii_uppercase == '.TRAN':
 		
-		simReq.SimulationType = simulationrequest_pb2.Transient
+		simReq.SimulationType = simReq.Transient
 		simReq.end = float(line[1])
 		simReq.step = float(line[2])
 
@@ -162,7 +163,7 @@ def parseLine(line, simReq = None):
 
 	if line[0].ascii_uppercase == '.AC':
 				
-		simReq.SimulationType = simulationrequest_pb2.Frequency
+		simReq.SimulationType = simReq.Frequency
 		points = float(line[1])
 		begin = float(line[2])*2*math.pi
 		end = float(line[3])*2*math.pi
