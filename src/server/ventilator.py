@@ -141,6 +141,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
+		component.values.append(float(line[4]))
 
 		
 
@@ -150,6 +151,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
+		component.values.append(float(line[4]))
 
 	return simReq
 
