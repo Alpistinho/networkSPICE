@@ -20,8 +20,18 @@ message Component { // Represents a component in the circuit
 
 	}
 
+	enum SourceType {
+
+		Sine = 0;
+		Square = 1;
+		Step = 2;
+		DC = 3;
+
+	}
+
 	ComponentType componentType = 1; // Which kind of component this is
 	repeated string nodes = 2; // To which nodes this component is linked To
 	repeated float values = 3; // The values that this component have
+	SourceType sourceType = 4; // Which kind of source this is (only valid for independent sources)
 
 }
