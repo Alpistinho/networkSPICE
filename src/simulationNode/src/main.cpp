@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	if (argc == 3) {
 
 		std::cout << "Usage: simulationNode <server address>. e.g. simulationNode 192.168.1.10" << std::endl;
-		std::cout << "Usage: simulationNode <server address> <ventilator port> <sink port>. e.g. simulationNode 192.168.1.10 5558 5557" << std::endl;
+		std::cout << "Usage: simulationNode <server address> <ventilator port> <sink port>. e.g. simulationNode 192.168.1.10 5557 5558" << std::endl;
 		
 		return 1;
 	}
@@ -80,7 +80,6 @@ int main(int argc, char *argv[]) {
 	Spice::TransientSimulation timeSim;
 	
 	networkSpiceMessages::SimulationRequest simReq;
-	networkSpiceMessages::Netlist netlist;
 	networkSpiceMessages::Results results;
 
 	std::vector<double> initialConditions(componentStorage.getSystemSize(), 0);
@@ -97,8 +96,6 @@ int main(int argc, char *argv[]) {
 		simReq.ParseFromArray(receivedMessage.data(), receivedMessage.size());
 
 		printSimulationRequest(simReq);
-
-		netlist = simReq.netlist();
 
 		std::vector<unsigned> requestedNodes;
 

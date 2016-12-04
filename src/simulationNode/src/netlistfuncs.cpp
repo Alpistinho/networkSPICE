@@ -10,12 +10,11 @@ void printSimulationRequest(networkSpiceMessages::SimulationRequest simReq) {
 	std::cout << "Step: " << simReq.step()  << std::endl;
 	std::cout << "Type: " << simReq.type()  << std::endl;
 
-	const networkSpiceMessages::Netlist &netlist = simReq.netlist();
 	std::cout << "Components: " << std::endl << std::endl;
 
-	for (int i = 0; i < netlist.component_size(); i++) {
+	for (int i = 0; i < simReq.components_size(); i++) {
 
-		const networkSpiceMessages::Component &component = netlist.component(i);
+		const networkSpiceMessages::Component &component = simReq.components(i);
 		
 		std::cout << "Type: " << component.componenttype()  << std::endl;
 		
@@ -50,11 +49,10 @@ Spice::ComponentStorage readComponents(networkSpiceMessages::SimulationRequest &
 
 	Spice::ComponentStorage componentStorage;
 
-	networkSpiceMessages::Netlist netlist = simReq.netlist();
 
-	for (unsigned i = 0; i < netlist.component_size(); i++) {
+	for (unsigned i = 0; i < simReq.components_size(); i++) {
 
-		const networkSpiceMessages::Component& component = netlist.component(i);
+		const networkSpiceMessages::Component& component = simReq.components(i);
 		
 		switch (component.componenttype()) { 
         

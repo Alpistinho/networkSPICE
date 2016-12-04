@@ -149,7 +149,7 @@ namespace Spice {
 
                     VoltageSource* dummyComponent = static_cast<VoltageSource*>(componentStorage->getComponentByIdentifier(componentIdentifier));
 
-                    if( line[5] == "sine") {
+                    if(line[5] == "sine") {
 
                         dummyComponent->setMode(Sinusoidal, stod(line[6]), stod(line[3]), stod(line[4]));
 
