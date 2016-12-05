@@ -4,6 +4,7 @@ import sys
 import math
 
 import numpy as np
+import multiprocessing as mp
 
 import zmq
 import time 
@@ -13,30 +14,26 @@ import simulationrequest_pb2
 import results_pb2
 
 import resultReader
+from resultReceiver import ResultReceiver
 
 
-context = zmq.Context()
-
-# Socket to receive messages on
-receiver = context.socket(zmq.PULL)
-receiver.bind("tcp://*:5558")
-
-# array of frequency and transient points
-simReturn = results_pb2.Results()
-
-# Wait for start of batch
-s = receiver.recv()
-print("Signal from ventilator: " + str(s))
-
+resultQueue = mp.Manager().Queue()
+resultReceiver = ResultReceiver(5558, resultQueue)
+resultReceiver.start()
 
 # Start our clock now
 tstart = time.time()
 
 
-s = receiver.recv()
-simReturn.ParseFromString(s)
+while resultQueue.qsize() == 0:
+	time.sleep(0.5)
+
+print("here")
+result = resultQueue.get()
+
 
 tend = time.time()
 print("Total elapsed time: %d msec" % ((tend-tstart)*1000))
 
-resultReader.plotResults(simReturn)
+resultReader.plotResults(result)
+resultReceiver.join()
