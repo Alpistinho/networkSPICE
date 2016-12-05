@@ -2,6 +2,8 @@
 
 import sys
 import math
+import tkinter as tk
+from tkinter import filedialog
 
 import zmq
 import time 
@@ -215,10 +217,12 @@ sender.bind("tcp://*:5557")
 
 # Socket with direct access to the sink: used to syncronize start of batch
 sink = context.socket(zmq.PUSH)
-sink.connect("tcp://192.168.1.4:5558")
+sink.connect("tcp://localhost:5558")
 
-
-simProtocol=openNetlist('/home/gabriel/networkSPICE/src/server/netlist.txt')
+root = tk.Tk()
+root.withdraw()
+file_path = filedialog.askopenfilename()
+simProtocol = openNetlist(file_path)
 
 print("Press Enter when the workers are ready: ")
 _ = raw_input()
