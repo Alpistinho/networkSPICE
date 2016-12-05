@@ -3,12 +3,16 @@
 import sys
 import math
 
+import numpy as np
+
 import zmq
 import time 
 
 import component_pb2
 import simulationrequest_pb2
 import results_pb2
+
+import resultReader
 
 
 context = zmq.Context()
@@ -34,3 +38,5 @@ simReturn.ParseFromString(s)
 
 tend = time.time()
 print("Total elapsed time: %d msec" % ((tend-tstart)*1000))
+
+resultReader.plotResults(simReturn)
