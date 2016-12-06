@@ -13,27 +13,16 @@ import component_pb2
 import simulationrequest_pb2
 import results_pb2
 
-import resultReader
 from resultReceiver import ResultReceiver
+from resultPlotter import ResultPlotter
 
 
 resultQueue = mp.Manager().Queue()
 resultReceiver = ResultReceiver(5558, resultQueue)
 resultReceiver.start()
 
-# Start our clock now
-tstart = time.time()
+resultPlotter = ResultPlotter(resultQueue, 1)
+resultPlotter.start()
 
-
-while resultQueue.qsize() == 0:
-	time.sleep(0.5)
-
-print("here")
-result = resultQueue.get()
-
-
-tend = time.time()
-print("Total elapsed time: %d msec" % ((tend-tstart)*1000))
-
-resultReader.plotResults(result)
 resultReceiver.join()
+resultPlotter.join()

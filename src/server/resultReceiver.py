@@ -7,7 +7,7 @@ import results_pb2
 class ResultReceiver(mp.Process):
 
 	def __init__(self, port, resultQueue):
-		super(ResultReceiver, self).__init__()
+		super().__init__()
 		self.resultQueue = resultQueue
 		self.port = port
 
