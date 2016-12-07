@@ -3,12 +3,18 @@
 import sys
 import math
 
+import numpy as np
+import multiprocessing as mp
+
 import zmq
 import time 
 
 import component_pb2
 import simulationrequest_pb2
 import results_pb2
+
+from resultReceiver import ResultReceiver
+from resultPlotter import ResultPlotter
 
 
 context = zmq.Context()
@@ -30,11 +36,20 @@ print("Signal from ventilator: " + str(s))
 tstart = time.time()
 
 
+resultQueue = mp.Manager().Queue()
+resultReceiver = ResultReceiver(5558, resultQueue)
+resultReceiver.start()
+
+
 simReturn.ParseFromString(receiver.recv())
 print(simReturn.__str__())
 
 s = receiver.recv()
 simReturn.ParseFromString(s)
 
-tend = time.time()
-print("Total elapsed time: %d msec" % ((tend-tstart)*1000))
+resultPlotter = ResultPlotter(resultQueue, 1)
+resultPlotter.start()
+
+
+resultReceiver.join()
+resultPlotter.join()
