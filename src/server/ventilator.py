@@ -32,27 +32,34 @@ def createMonteCarloProto(simProtocolAux):
 	# Ex: C 2 0 1e-6 10
 	mu = []
 	sigma = []
+	random.seed()
 	print('pudim')
 	simNewProtocol=copy.deepcopy(simProtocolAux)
-
-	
 	# print(simNewProtocol)
 
+	changeComponent = simNewProtocol.components.add()
+	# access components in protobuf
 	for protoIterator in simNewProtocol.components:
-		mu.append(protoIterator.values)
-		
-		print("tipo",type(mu[0]))
-		
-		# [float(i) for i in mu]
+		#see if the component has tolerance to create new random value
 		if protoIterator.tolerance != None:
-			sigma.append(protoIterator.tolerance)
-			randomComponentValue=random.gauss(mu,sigma)	
-	
+			#add value to a variable
+			for valueIterator in protoIterator.values: 
+				mu = valueIterator
+				print(" mu :", mu)
+ 			# [float(i) for i in mu]
+			# add tolerance to a variable sigma
+			for toleranceIterator in protoIterator.tolerance:
+	 			sigma = toleranceIterator
+			
+			print("sigma :", sigma)
+
+			 = float(abs(np.random.normal(mu,sigma,1)))
+		print(protoIterator)
+		print('saiu')
+				
 	print("pudim 2")
 
 	
-	changeComponent = simNewProtocol.components.add()
-	changeComponent.values.append(randomComponentValue)
 	return simNewProtocol
 
 #function to create netlist
