@@ -30,7 +30,7 @@ def createMonteCarloProto(simProtocolAux):
 	# Ex: C 2 0 1e-6 10
 	changeComponent = simProtocolAux.components.add()
 
-	tolerance=tolerance/100
+	tolerance = tolerance*0.01
 	randomComponentValue=float(abs(np.random.normal(changeComponent.value,changeComponent.tolerance,1)))
 
 	changeComponent.values.append(randomComponentValue)
@@ -256,13 +256,17 @@ print("Sending tasks to workers...")
 
 
 # sendMessage(simProtocol)
-if sys.argv[1] == None:
-	print("Number of workers not specified. Using 1 as default")
-	numberworkers=1
-else:
-	numberWorkers=int(sys.argv[1])
 
-for index in range(numberWorkers):
+try:
+	simulationCount = int(sys.argv[1])
+except IndexError:
+	print("No number of simulations defined. Using 1 as default")
+	simulationCount = 1
+
+	
+	
+
+for index in range(simulationCount):
 	# creates a new protocol with random values respecting tolerance of components
 	# return the protocol to be sent 
 	# need to be tested
