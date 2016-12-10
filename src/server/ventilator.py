@@ -265,11 +265,13 @@ else:
 for index in range(numberWorkers):
 	# creates a new protocol with random values respecting tolerance of components
 	# return the protocol to be sent 
-	# need to be tested
+	
+	# need to be tested:
 	# 1. test if the new protocol has different memory space as simProtocol
 	# 2. test the new random values
 	# 3. add tolerance in component.proto
 	# 4. changes in the worker program if necessary
+	
 	simMonteCarloProtocol = createMonteCarloProto(simProtocol)
 	print(simMonteCarloProtocol.__str__())
 	
