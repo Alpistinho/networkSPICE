@@ -32,10 +32,12 @@ def createMonteCarloProto(simProtocolAux):
 	changeComponent = simProtocolAux.components.add()
 	
 	
-	var = changeComponent.values
-	print( type((simProtocolAux.Component.values[0])))
+	mean = changeComponent.values[0]
+	var = changeComponent.tolerance[0]
+
+	print( type((var)))
 	print("pudim")
-	randomComponentValue=float(abs(np.random.normal(simProtocolAux.values,simProtocolAux.tolerance,1)))
+	#randomComponentValue=float(abs(np.random.normal(changeComponent.values,changeComponent.tolerance,1)))
 	
 	changeComponent.values.append(randomComponentValue)
 	return simProtocolAux
@@ -257,7 +259,8 @@ for index in range(numberWorkers):
 	# 2. test the new random values
 	# 3. add tolerance in component.proto
 	# 4. changes in the worker program if necessary
-	#print(simProtocol.__str__())
+	# print(simProtocol.__str__())
+
 	simMonteCarloProtocol = createMonteCarloProto(simProtocol)
 	print(simMonteCarloProtocol.__str__())
 	
