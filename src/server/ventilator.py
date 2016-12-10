@@ -2,6 +2,8 @@
 
 import sys
 import math
+import copy 
+import random
 
 import numpy as np
 
@@ -28,16 +30,30 @@ except NameError:
 def createMonteCarloProto(simProtocolAux):
 	# requires that the tolerance is the last element in the netlist and in percentage 
 	# Ex: C 2 0 1e-6 10
-	
-	mean = changeComponent.values[0]
-	var = changeComponent.tolerance[0]
+	mu = []
+	sigma = []
+	print('pudim')
+	simNewProtocol=copy.deepcopy(simProtocolAux)
 
-	print( type((var)))
-	print("pudim")
-	#randomComponentValue=float(abs(np.random.normal(changeComponent.values,changeComponent.tolerance,1)))
 	
+	# print(simNewProtocol)
+
+	for protoIterator in simNewProtocol.components:
+		mu.append(protoIterator.values)
+		
+		print("tipo",type(mu[0]))
+		
+		# [float(i) for i in mu]
+		if protoIterator.tolerance != None:
+			sigma.append(protoIterator.tolerance)
+			randomComponentValue=random.gauss(mu,sigma)	
+	
+	print("pudim 2")
+
+	
+	changeComponent = simNewProtocol.components.add()
 	changeComponent.values.append(randomComponentValue)
-	return simProtocolAux
+	return simNewProtocol
 
 #function to create netlist
 def openNetlist(fileName):
@@ -261,6 +277,7 @@ for index in range(simulationCount):
 	# 3. add tolerance in component.proto
 	# 4. changes in the worker program if necessary
 	# print(simProtocol.__str__())
+	print(simProtocol)
 
 	simMonteCarloProtocol = createMonteCarloProto(simProtocol)
 	print(simMonteCarloProtocol.__str__())
