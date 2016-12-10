@@ -29,11 +29,16 @@ def createMonteCarloProto(simProtocolAux):
 	# requires that the tolerance is the last element in the netlist and in percentage 
 	# Ex: C 2 0 1e-6 10
 
+<<<<<<< HEAD
 	changeComponent = simProtocolAux.components.add()
 	
 	
 	mean = changeComponent.values[0]
 	var = changeComponent.tolerance[0]
+=======
+	tolerance = tolerance*0.01
+	randomComponentValue=float(abs(np.random.normal(changeComponent.value,changeComponent.tolerance,1)))
+>>>>>>> 940b8d1a9630effce3cb1ef7dbbf9d13fa382007
 
 	print( type((var)))
 	print("pudim")
@@ -245,13 +250,17 @@ print("node %i" % (simProtocol.nodes[0]))
 sink.send_string(str(simProtocol.nodes[0]))
 
 # sendMessage(simProtocol)
-if sys.argv[1] == None:
-	print("Number of workers not specified. Using 1 as default")
-	numberworkers=1
-else:
-	numberWorkers=int(sys.argv[1])
 
-for index in range(numberWorkers):
+try:
+	simulationCount = int(sys.argv[1])
+except IndexError:
+	print("No number of simulations defined. Using 1 as default")
+	simulationCount = 1
+
+	
+	
+
+for index in range(simulationCount):
 	# creates a new protocol with random values respecting tolerance of components
 	# return the protocol to be sent 	
 	# need to be tested:
