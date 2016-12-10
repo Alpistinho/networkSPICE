@@ -28,11 +28,15 @@ except NameError:
 def createMonteCarloProto(simProtocolAux):
 	# requires that the tolerance is the last element in the netlist and in percentage 
 	# Ex: C 2 0 1e-6 10
+
 	changeComponent = simProtocolAux.components.add()
 	
 	
-	randomComponentValue=float(abs(np.random.normal(float(changeComponent.values),float(changeComponent.tolerance),1)))
-
+	var = changeComponent.values
+	print( type((simProtocolAux.Component.values[0])))
+	print("pudim")
+	randomComponentValue=float(abs(np.random.normal(simProtocolAux.values,simProtocolAux.tolerance,1)))
+	
 	changeComponent.values.append(randomComponentValue)
 	return simProtocolAux
 
@@ -58,8 +62,7 @@ def openNetlist(fileName):
 
 def parseComponentLine(line,simReq):
 
-	component = simReq.components.add()                                                  
-    
+	component = simReq.components.add()                                                      
 
 	if line[0] == 'R':
 
@@ -68,7 +71,6 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
 		component.tolerance.append(float(line[4])/100)
-
 	
 	if line[0] == 'C':
 		component.componentType = component.Capacitor
@@ -76,8 +78,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])		
 		component.values.append(float(line[3]))
 		component.tolerance.append(float(line[4])/100)
-
-		
+	
 
 	if line[0] == 'L':
 		component.componentType = component.Inductor
@@ -85,7 +86,6 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])				
 		component.values.append(float(line[3]))
 		component.tolerance.append(float(line[4])/100)
-
 		
 
 	if line[0] == 'E':
@@ -97,8 +97,6 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[4])		
 		component.values.append(float(line[5]))
 
-		
-
 	if line[0] == 'F':
 		
 		component.componentType = component.CurrentControlledCurrentSource
@@ -107,8 +105,6 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])				
 		component.values.append(float(line[5]))
-
-		
 		
 	if line[0] == 'G':
 		
@@ -119,8 +115,6 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[4])				
 		component.values.append(float(line[5]))
 
-		
-
 	if line[0] == 'H':
 		
 		component.componentType = component.CurrentControlledVoltageSource
@@ -129,8 +123,6 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])				
 		component.values.append(float(line[5]))
-
-		
 
 	if line[0] == 'O':
 		
@@ -175,8 +167,6 @@ def parseComponentLine(line,simReq):
 		component.values.append(float(line[4]))
 		
 	return simReq
-
-		
 
 def parseConfigurationLine(line, simReq):
 
@@ -227,7 +217,6 @@ def parseConfigurationLine(line, simReq):
 #function to send the message using Py0MQ
 # def sendMessage(simReq):
 
-
 context = zmq.Context()
 
 # Socket to send messages on
@@ -236,7 +225,7 @@ sender.bind("tcp://*:5557")
 
 # Socket with direct access to the sink: used to syncronize start of batch
 sink = context.socket(zmq.PUSH)
-sink.connect("tcp://localhost:5558")
+sink.connect("tcp://localhost:5559")
 
 root = tk.Tk()
 root.withdraw()
@@ -247,12 +236,11 @@ print("Press Enter when the workers are ready: ")
 _ = raw_input()
 print("Sending tasks to workers...")
 
-
 # The first message is "0" and signals start of batch
 
-print(type(simProtocol.nodes[0]))
+print("node %i" % (simProtocol.nodes[0]))
 
-sink.send(b"simProtocol.nodes[0]")
+sink.send_string(str(simProtocol.nodes[0]))
 
 # sendMessage(simProtocol)
 if sys.argv[1] == None:
@@ -269,7 +257,7 @@ for index in range(numberWorkers):
 	# 2. test the new random values
 	# 3. add tolerance in component.proto
 	# 4. changes in the worker program if necessary
-	print(simProtocol.__str__())
+	#print(simProtocol.__str__())
 	simMonteCarloProtocol = createMonteCarloProto(simProtocol)
 	print(simMonteCarloProtocol.__str__())
 	
