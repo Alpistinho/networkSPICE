@@ -2,8 +2,12 @@
 
 import sys
 import math
+
+import numpy as np
+
 import tkinter as tk
 from tkinter import filedialog
+
 
 import zmq
 import time 
@@ -12,11 +16,25 @@ import component_pb2
 import simulationrequest_pb2
 
 
+import time 
 try:
     raw_input
 except NameError:
     # Python 3
     raw_input = input
+
+
+# function to create random values for components for monte carlo simulation
+def createMonteCarloProto(simProtocolAux):
+	# requires that the tolerance is the last element in the netlist and in percentage 
+	# Ex: C 2 0 1e-6 10
+	changeComponent = simProtocolAux.components.add()
+
+	tolerance=tolerance/100
+	randomComponentValue=float(abs(np.random.normal(changeComponent.value,changeComponent.tolerance,1)))
+
+	changeComponent.values.append(randomComponentValue)
+	return simProtocolAux
 
 #function to create netlist
 def openNetlist(fileName):
@@ -28,12 +46,9 @@ def openNetlist(fileName):
 			
 			line = line.split(' ')
 
-
-
 			if (line[0][0] == '.'):
 				simReq = parseConfigurationLine(line, simReq)
 			else:
-				print("olar")
 				parseComponentLine(line,simReq)
 
 		fileNetlist.close()
@@ -44,11 +59,13 @@ def openNetlist(fileName):
 def parseComponentLine(line,simReq):
 
 	component = simReq.components.add()
+
 	if line[0] == 'R':
 
 		component.componentType = component.Resistor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
+		#line[3]=randomValue(float(line[3]),float(line[4]))
 		component.values.append(float(line[3]))
 
 	
@@ -56,6 +73,7 @@ def parseComponentLine(line,simReq):
 		component.componentType = component.Capacitor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
+		# value=randomValue(float(line[3]),float(line[4]))		
 		component.values.append(float(line[3]))
 
 		
@@ -64,6 +82,7 @@ def parseComponentLine(line,simReq):
 		component.componentType = component.Inductor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
+		# line[3]=randomValue(float(line[3]),float(line[4]))				
 		component.values.append(float(line[3]))
 
 		
@@ -75,6 +94,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])
+		# line[5]=randomValue(float(line[5]),float(line[6]))		
 		component.values.append(float(line[5]))
 
 		
@@ -86,6 +106,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])
+		# line[5]=randomValue(float(line[5]),float(line[6]))				
 		component.values.append(float(line[5]))
 
 		
@@ -97,6 +118,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])
+		# line[5]=randomValue(float(line[5]),float(line[6]))				
 		component.values.append(float(line[5]))
 
 		
@@ -108,6 +130,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
 		component.nodes.append(line[4])
+		# line[5]=randomValue(float(line[5]),float(line[6]))				
 		component.values.append(float(line[5]))
 
 		
@@ -136,7 +159,7 @@ def parseComponentLine(line,simReq):
 		component.values.append(float(line[9]))
 
 				
-
+	# No montecarlo's curve implementation for this component
 	if line[0] == 'V':
 		
 		component.componentType = component.VoltageSource
@@ -144,9 +167,8 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
 		component.values.append(float(line[4]))
-
 		
-
+	# No montecarlo's curve implementation for this component	
 	if line[0] == 'I':
 		
 		component.componentType = component.CurrentSource
@@ -154,7 +176,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[2])
 		component.values.append(float(line[3]))
 		component.values.append(float(line[4]))
-
+		
 	return simReq
 
 		
@@ -166,6 +188,7 @@ def parseConfigurationLine(line, simReq):
 		simReq.type = simReq.Transient
 		simReq.end = float(line[1])
 		simReq.step = float(line[2])
+		
 
 		return simReq
 
@@ -199,8 +222,7 @@ def parseConfigurationLine(line, simReq):
 	
 	if line[0].upper() == '.PRINT':
 
-		for node in line[1:]:
-			simReq.nodes.append(int(node))
+		simReq.nodes.append(int(line[1]))
 
 		return simReq
 
@@ -230,10 +252,28 @@ print("Sending tasks to workers...")
 
 
 # The first message is "0" and signals start of batch
-sink.send(b'0')
+#sink.send(simProtocol.nodes[0])
+
+
 # sendMessage(simProtocol)
-print(simProtocol.__str__())
-sender.send(simProtocol.SerializeToString())
+if sys.argv[1] == None:
+	print("Number of workers not specified. Using 1 as default")
+	numberworkers=1
+else:
+	numberWorkers=int(sys.argv[1])
+
+for index in range(numberWorkers):
+	# creates a new protocol with random values respecting tolerance of components
+	# return the protocol to be sent 
+	# need to be tested
+	# 1. test if the new protocol has different memory space as simProtocol
+	# 2. test the new random values
+	# 3. add tolerance in component.proto
+	# 4. changes in the worker program if necessary
+	simMonteCarloProtocol = createMonteCarloProto(simProtocol)
+	print(simMonteCarloProtocol.__str__())
+	
+	sender.send(simMonteCarloProtocol.SerializeToString())
 
 # Give 0MQ time to deliver
 time.sleep(1)
