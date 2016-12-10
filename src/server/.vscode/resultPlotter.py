@@ -73,5 +73,5 @@ class ResultPlotter(mp.Process):
 
 
 		except KeyboardInterrupt:
-			self.freqFig.close()
+			plt.close(self.freqFig)
 			print("Shutting down ResultPlotter")
