@@ -28,6 +28,7 @@ except NameError:
 def createMonteCarloProto(simProtocolAux):
 	# requires that the tolerance is the last element in the netlist and in percentage 
 	# Ex: C 2 0 1e-6 10
+<<<<<<< HEAD
 
 	changeComponent = simProtocolAux.components.add()
 	
@@ -38,6 +39,11 @@ def createMonteCarloProto(simProtocolAux):
 	tolerance = tolerance*0.01
 	randomComponentValue=float(abs(np.random.normal(changeComponent.value,changeComponent.tolerance,1)))
 
+=======
+	
+	mean = changeComponent.values[0]
+	var = changeComponent.tolerance[0]
+>>>>>>> 9a29a6bef8785e0cfc30bb456c646a4406264b37
 
 	print( type((var)))
 	print("pudim")
