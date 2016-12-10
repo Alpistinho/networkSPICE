@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='component.proto',
   package='networkSpiceMessages',
   syntax='proto3',
-  serialized_pb=_b('\n\x0f\x63omponent.proto\x12\x14networkSpiceMessages\"\xf7\x03\n\tComponent\x12\x44\n\rcomponentType\x18\x01 \x01(\x0e\x32-.networkSpiceMessages.Component.ComponentType\x12\r\n\x05nodes\x18\x02 \x03(\t\x12\x0e\n\x06values\x18\x03 \x03(\x02\x12>\n\nsourceType\x18\x04 \x01(\x0e\x32*.networkSpiceMessages.Component.SourceType\"\x8e\x02\n\rComponentType\x12\x08\n\x04\x63oco\x10\x00\x12\r\n\tCapacitor\x10\x01\x12\x0c\n\x08Inductor\x10\x02\x12\x11\n\rVoltageSource\x10\x03\x12\x11\n\rCurrentSource\x10\x04\x12\"\n\x1eVoltageControlledVoltageSource\x10\x05\x12\"\n\x1e\x43urrentControlledCurrentSource\x10\x06\x12\"\n\x1eVoltageControlledCurrentSource\x10\x07\x12\"\n\x1e\x43urrentControlledVoltageSource\x10\x08\x12\t\n\x05OpAmp\x10\t\x12\x07\n\x03\x42JT\x10\n\x12\x0c\n\x08Resistor\x10\x0b\"4\n\nSourceType\x12\x08\n\x04Sine\x10\x00\x12\n\n\x06Square\x10\x01\x12\x08\n\x04Step\x10\x02\x12\x06\n\x02\x44\x43\x10\x03\x62\x06proto3')
+  serialized_pb=_b('\n\x0f\x63omponent.proto\x12\x14networkSpiceMessages\"\x8a\x04\n\tComponent\x12\x44\n\rcomponentType\x18\x01 \x01(\x0e\x32-.networkSpiceMessages.Component.ComponentType\x12\r\n\x05nodes\x18\x02 \x03(\t\x12\x0e\n\x06values\x18\x03 \x03(\x02\x12\x11\n\ttolerance\x18\x04 \x03(\x02\x12>\n\nsourceType\x18\x05 \x01(\x0e\x32*.networkSpiceMessages.Component.SourceType\"\x8e\x02\n\rComponentType\x12\x08\n\x04\x63oco\x10\x00\x12\r\n\tCapacitor\x10\x01\x12\x0c\n\x08Inductor\x10\x02\x12\x11\n\rVoltageSource\x10\x03\x12\x11\n\rCurrentSource\x10\x04\x12\"\n\x1eVoltageControlledVoltageSource\x10\x05\x12\"\n\x1e\x43urrentControlledCurrentSource\x10\x06\x12\"\n\x1eVoltageControlledCurrentSource\x10\x07\x12\"\n\x1e\x43urrentControlledVoltageSource\x10\x08\x12\t\n\x05OpAmp\x10\t\x12\x07\n\x03\x42JT\x10\n\x12\x0c\n\x08Resistor\x10\x0b\"4\n\nSourceType\x12\x08\n\x04Sine\x10\x00\x12\n\n\x06Square\x10\x01\x12\x08\n\x04Step\x10\x02\x12\x06\n\x02\x44\x43\x10\x03\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -82,8 +82,8 @@ _COMPONENT_COMPONENTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=221,
-  serialized_end=491,
+  serialized_start=240,
+  serialized_end=510,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_COMPONENTTYPE)
 
@@ -112,8 +112,8 @@ _COMPONENT_SOURCETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=493,
-  serialized_end=545,
+  serialized_start=512,
+  serialized_end=564,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_SOURCETYPE)
 
@@ -147,8 +147,15 @@ _COMPONENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='sourceType', full_name='networkSpiceMessages.Component.sourceType', index=3,
-      number=4, type=14, cpp_type=8, label=1,
+      name='tolerance', full_name='networkSpiceMessages.Component.tolerance', index=3,
+      number=4, type=2, cpp_type=6, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='sourceType', full_name='networkSpiceMessages.Component.sourceType', index=4,
+      number=5, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -168,7 +175,7 @@ _COMPONENT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=42,
-  serialized_end=545,
+  serialized_end=564,
 )
 
 _COMPONENT.fields_by_name['componentType'].enum_type = _COMPONENT_COMPONENTTYPE

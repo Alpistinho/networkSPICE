@@ -33,7 +33,7 @@ message Component { // Represents a component in the circuit
 	ComponentType componentType = 1; // Which kind of component this is
 	repeated string nodes = 2; // To which nodes this component is linked To
 	repeated float values = 3; // The values that this component have
-	//repeated float tolerance
-	SourceType sourceType = 4; // Which kind of source this is (only valid for independent sources)
+	repeated float tolerance = 4; // the tolerance of this component in percent
+	SourceType sourceType = 5; // Which kind of source this is (only valid for independent sources)
 	
 }

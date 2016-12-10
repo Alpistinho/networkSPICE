@@ -29,9 +29,9 @@ def createMonteCarloProto(simProtocolAux):
 	# requires that the tolerance is the last element in the netlist and in percentage 
 	# Ex: C 2 0 1e-6 10
 	changeComponent = simProtocolAux.components.add()
-
-	tolerance=tolerance/100
-	randomComponentValue=float(abs(np.random.normal(changeComponent.value,changeComponent.tolerance,1)))
+	
+	
+	randomComponentValue=float(abs(np.random.normal(float(changeComponent.values),float(changeComponent.tolerance),1)))
 
 	changeComponent.values.append(randomComponentValue)
 	return simProtocolAux
@@ -58,32 +58,33 @@ def openNetlist(fileName):
 
 def parseComponentLine(line,simReq):
 
-	component = simReq.components.add()
+	component = simReq.components.add()                                                  
+    
 
 	if line[0] == 'R':
 
 		component.componentType = component.Resistor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
-		#line[3]=randomValue(float(line[3]),float(line[4]))
 		component.values.append(float(line[3]))
+		component.tolerance.append(float(line[4])/100)
 
 	
 	if line[0] == 'C':
 		component.componentType = component.Capacitor
 		component.nodes.append(line[1])
-		component.nodes.append(line[2])
-		# value=randomValue(float(line[3]),float(line[4]))		
+		component.nodes.append(line[2])		
 		component.values.append(float(line[3]))
+		component.tolerance.append(float(line[4])/100)
 
 		
 
 	if line[0] == 'L':
 		component.componentType = component.Inductor
 		component.nodes.append(line[1])
-		component.nodes.append(line[2])
-		# line[3]=randomValue(float(line[3]),float(line[4]))				
+		component.nodes.append(line[2])				
 		component.values.append(float(line[3]))
+		component.tolerance.append(float(line[4])/100)
 
 		
 
@@ -93,8 +94,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
-		component.nodes.append(line[4])
-		# line[5]=randomValue(float(line[5]),float(line[6]))		
+		component.nodes.append(line[4])		
 		component.values.append(float(line[5]))
 
 		
@@ -105,8 +105,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
-		component.nodes.append(line[4])
-		# line[5]=randomValue(float(line[5]),float(line[6]))				
+		component.nodes.append(line[4])				
 		component.values.append(float(line[5]))
 
 		
@@ -117,8 +116,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
-		component.nodes.append(line[4])
-		# line[5]=randomValue(float(line[5]),float(line[6]))				
+		component.nodes.append(line[4])				
 		component.values.append(float(line[5]))
 
 		
@@ -129,8 +127,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])
 		component.nodes.append(line[3])
-		component.nodes.append(line[4])
-		# line[5]=randomValue(float(line[5]),float(line[6]))				
+		component.nodes.append(line[4])				
 		component.values.append(float(line[5]))
 
 		
@@ -252,8 +249,10 @@ print("Sending tasks to workers...")
 
 
 # The first message is "0" and signals start of batch
-#sink.send(simProtocol.nodes[0])
 
+print(type(simProtocol.nodes[0]))
+
+sink.send(b"simProtocol.nodes[0]")
 
 # sendMessage(simProtocol)
 if sys.argv[1] == None:
@@ -264,14 +263,13 @@ else:
 
 for index in range(numberWorkers):
 	# creates a new protocol with random values respecting tolerance of components
-	# return the protocol to be sent 
-	
+	# return the protocol to be sent 	
 	# need to be tested:
 	# 1. test if the new protocol has different memory space as simProtocol
 	# 2. test the new random values
 	# 3. add tolerance in component.proto
 	# 4. changes in the worker program if necessary
-	
+	print(simProtocol.__str__())
 	simMonteCarloProtocol = createMonteCarloProto(simProtocol)
 	print(simMonteCarloProtocol.__str__())
 	
