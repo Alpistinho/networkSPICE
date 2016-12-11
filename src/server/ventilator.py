@@ -56,7 +56,7 @@ def createMonteCarloProto(simProtocolAux):
 				
 			# print("sigma :", sigma)
 
-			protoIterator.values[0] = float(abs(np.random.normal(mu,sigma,1)))
+			protoIterator.values[0] = float(abs(np.random.normal(mu,mu*sigma,1)))
 			# print(protoIterator)
 				
 	return simNewProtocol
