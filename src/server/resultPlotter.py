@@ -17,6 +17,7 @@ def parseResults(results):
 	for freqPoint in results.frequencyPoint:
 
 		freqAmplitude.append(freqPoint.magnitude[0])
+		
 		freqPhase.append(freqPoint.phase[0])
 		freqFreqs.append(freqPoint.frequency)
 

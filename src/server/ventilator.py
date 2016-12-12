@@ -2,6 +2,8 @@
 
 import sys
 import math
+import copy 
+import random
 
 import numpy as np
 
@@ -28,7 +30,7 @@ except NameError:
 def createMonteCarloProto(simProtocolAux):
 	# requires that the tolerance is the last element in the netlist and in percentage 
 	# Ex: C 2 0 1e-6 10
-<<<<<<< HEAD
+
 
 	changeComponent = simProtocolAux.components.add()
 	
@@ -39,18 +41,39 @@ def createMonteCarloProto(simProtocolAux):
 	tolerance = tolerance*0.01
 	randomComponentValue=float(abs(np.random.normal(changeComponent.value,changeComponent.tolerance,1)))
 
-=======
 	
 	mean = changeComponent.values[0]
 	var = changeComponent.tolerance[0]
->>>>>>> 9a29a6bef8785e0cfc30bb456c646a4406264b37
+	mu = []
+	sigma = []
 
-	print( type((var)))
-	print("pudim")
-	#randomComponentValue=float(abs(np.random.normal(changeComponent.values,changeComponent.tolerance,1)))
+
+	simNewProtocol=copy.deepcopy(simProtocolAux)
+	# print(simNewProtocol)
+
 	
-	changeComponent.values.append(randomComponentValue)
-	return simProtocolAux
+	# access components in protobuf
+	for protoIterator in simNewProtocol.components:
+		#see if the component has tolerance to create new random value
+		
+		checker = bool(protoIterator.tolerance)
+		if checker:
+			print("tolerancia: ",protoIterator.tolerance[0])
+			
+			print(protoIterator.componentType)
+			#add value to a variable
+			for valueIterator in protoIterator.values: 			
+				mu = valueIterator
+				# print(" mu :", mu)
+			for toleranceIterator in protoIterator.tolerance:
+	 			sigma = toleranceIterator
+				
+			# print("sigma :", sigma)
+
+			protoIterator.values[0] = float(abs(np.random.normal(mu,mu*sigma,1)))
+			# print(protoIterator)
+				
+	return simNewProtocol
 
 #function to create netlist
 def openNetlist(fileName):
@@ -274,6 +297,7 @@ for index in range(simulationCount):
 	# 3. add tolerance in component.proto
 	# 4. changes in the worker program if necessary
 	# print(simProtocol.__str__())
+	print(simProtocol)
 
 	simMonteCarloProtocol = createMonteCarloProto(simProtocol)
 	print(simMonteCarloProtocol.__str__())
