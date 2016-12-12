@@ -85,7 +85,7 @@ def parseComponentLine(line,simReq):
 
 	component = simReq.components.add()                                                      
 
-	if line[0] == 'R':
+	if line[0][0] == 'R':
 
 		component.componentType = component.Resistor
 		component.nodes.append(line[1])
@@ -93,7 +93,7 @@ def parseComponentLine(line,simReq):
 		component.values.append(float(line[3]))
 		component.tolerance.append(float(line[4])/100)
 	
-	if line[0] == 'C':
+	if line[0][0] == 'C':
 		component.componentType = component.Capacitor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])		
@@ -101,7 +101,7 @@ def parseComponentLine(line,simReq):
 		component.tolerance.append(float(line[4])/100)
 	
 
-	if line[0] == 'L':
+	if line[0][0] == 'L':
 		component.componentType = component.Inductor
 		component.nodes.append(line[1])
 		component.nodes.append(line[2])				
@@ -109,7 +109,7 @@ def parseComponentLine(line,simReq):
 		component.tolerance.append(float(line[4])/100)
 		
 
-	if line[0] == 'E':
+	if line[0][0] == 'E':
 		
 		component.componentType = component.VoltageControlledVoltageSource
 		component.nodes.append(line[1])
@@ -118,7 +118,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[4])		
 		component.values.append(float(line[5]))
 
-	if line[0] == 'F':
+	if line[0][0] == 'F':
 		
 		component.componentType = component.CurrentControlledCurrentSource
 		component.nodes.append(line[1])
@@ -127,7 +127,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[4])				
 		component.values.append(float(line[5]))
 		
-	if line[0] == 'G':
+	if line[0][0] == 'G':
 		
 		component.componentType = component.VoltageControlledCurrentSource
 		component.nodes.append(line[1])
@@ -136,7 +136,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[4])				
 		component.values.append(float(line[5]))
 
-	if line[0] == 'H':
+	if line[0][0] == 'H':
 		
 		component.componentType = component.CurrentControlledVoltageSource
 		component.nodes.append(line[1])
@@ -145,7 +145,7 @@ def parseComponentLine(line,simReq):
 		component.nodes.append(line[4])				
 		component.values.append(float(line[5]))
 
-	if line[0] == 'O':
+	if line[0][0] == 'O':
 		
 		component.componentType = component.OpAmp
 		component.nodes.append(line[1])
@@ -155,7 +155,7 @@ def parseComponentLine(line,simReq):
 
 		
 
-	if line[0] == 'Q':
+	if line[0][0] == 'Q':
 		
 		component.componentType = component.BJT
 		component.nodes.append(line[1])
@@ -170,7 +170,7 @@ def parseComponentLine(line,simReq):
 
 				
 	# No montecarlo's curve implementation for this component
-	if line[0] == 'V':
+	if line[0][0] == 'V':
 		
 		component.componentType = component.VoltageSource
 		component.nodes.append(line[1])
@@ -179,7 +179,7 @@ def parseComponentLine(line,simReq):
 		component.values.append(float(line[4]))
 		
 	# No montecarlo's curve implementation for this component	
-	if line[0] == 'I':
+	if line[0][0] == 'I':
 		
 		component.componentType = component.CurrentSource
 		component.nodes.append(line[1])

@@ -40,7 +40,7 @@ def parseResults(results):
 
 class ResultPlotter(mp.Process):
 
-	def __init__(self, resultQueue, updateFrequency = 1):
+	def __init__(self, resultQueue, updateFrequency = 5):
 
 		super().__init__()
 
@@ -62,6 +62,8 @@ class ResultPlotter(mp.Process):
 				if self.resultQueue.qsize() > 0:
 					result = self.resultQueue.get()
 					freqAmplitude, freqPhase, freqFreqs, tranAmplitude, tranTime = parseResults(result)
+					print(freqFreqs)
+					print(freqAmplitude)
 					self.freqAx.plot(freqFreqs, freqAmplitude)
 
 				
